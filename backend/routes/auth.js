@@ -80,7 +80,12 @@ function verifyToken(req, res, next) {
 
 }
 
+router.post('/addpost',(req, res, next) => {
 
+console.log("in add post", req.body)
+res.json({hello:false})
+
+})
 
 
 
