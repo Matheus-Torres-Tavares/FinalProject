@@ -15,7 +15,7 @@ const Home = (props) => {
   //   }
   const addingPosts = async () => {
 
-    let res = await actions.addPost({ coolbeanz: true })
+    let res = await actions.addPost({ title: "ballsack, they are cool", username: "Motherfucker Jones", text: "hello hello", })
     console.log(res)
 
 
@@ -24,7 +24,7 @@ const Home = (props) => {
   return (
     <div>
       Home
-      <button onClick={addingPosts}>Change Fruit</button>
+      <button onClick={addingPosts}>Add Post</button>
 
     </div>
   )
