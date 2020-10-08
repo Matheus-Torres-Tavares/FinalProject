@@ -36,6 +36,7 @@ const postSchema = new Schema({
   title: { type: String, required: true },
   username: { type: String, required: true },
   text: { type: String, required: true },
+  userID: { type: String },
   date: { type: Date, default: Date.now },
   // comments: [commentSchema],
 });
