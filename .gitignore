@@ -9,6 +9,23 @@ npm-debug.log
 # Environment Variables should NEVER be published
 .env
 
+frontend/node_modules
+
+backend/node_modules
+
+frontend/.env
+
+backend/.env
+
+**/node_modules
+**/.env
+
+**/package-lock.json
+frontend/package-lock.json
+background/package-lock.json
+
+.DS_Store
+
 # dependencies client
 client/node_modules
 

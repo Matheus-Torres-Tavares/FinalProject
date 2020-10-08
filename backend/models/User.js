@@ -1,5 +1,5 @@
 // const { Schema, model } = require("mongoose");
-// const PLM = require("passport-local-mongoose");
+const PLM = require("passport-local-mongoose");
 
 // const userSchema = new Schema(
 //   {
@@ -37,6 +37,7 @@ const userSchema = new Schema(
       trim: true,
       minlength: 10,
     },
+    email: String
   },
   {
     timestamps: true,
@@ -44,7 +45,7 @@ const userSchema = new Schema(
   }
 );
 
-// userSchema.plugin(PLM, { usernameField: "email" });
+userSchema.plugin(PLM, { usernameField: "email" });
 
 const User = mongoose.model("User", userSchema);
 
