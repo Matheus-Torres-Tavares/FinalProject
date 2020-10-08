@@ -35,6 +35,10 @@ const actions = {
   logOut: async () => {
     window.localStorage.removeItem('token')
     return await API.get('/logout', resetHead())
+  },
+  addPost: async (post) => {
+    let res = await API.post('/addpost',  post  , resetHead())
+    return res
   }
 };
 
