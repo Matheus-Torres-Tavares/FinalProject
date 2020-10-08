@@ -39,11 +39,11 @@ const App = () => {
   const history = useHistory();
 
   return (
-    
+
     <TheContext.Provider value={{ history, user, setUser }}>
       {user?.email}
       <nav>
-        
+
         <NavLink to="/">Home</NavLink>
 
         {user ? (
@@ -54,15 +54,15 @@ const App = () => {
             <NavLink to="/profile">Profile</NavLink>
           </Fragment>
         ) : (
-          <Fragment>
-            <NavLink to="/sign-up">Sign Up</NavLink>
-            <NavLink to="/log-in">Log In</NavLink>
-        
-          </Fragment>
-        )}
+            <Fragment>
+              <NavLink to="/sign-up">Sign Up</NavLink>
+              <NavLink to="/log-in">Log In</NavLink>
+
+            </Fragment>
+          )}
       </nav>
       <Switch>
-        <Route exact path="/" render={(props) => <Home {...props} />} />
+        <Route exact path="/" render={(props) => <Home {...props} thePropUser={user} />} />
         <Route
           exact
           path="/sign-up"
