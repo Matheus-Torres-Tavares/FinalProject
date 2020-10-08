@@ -39,9 +39,11 @@ const App = () => {
   const history = useHistory();
 
   return (
+    
     <TheContext.Provider value={{ history, user, setUser }}>
       {user?.email}
       <nav>
+        
         <NavLink to="/">Home</NavLink>
 
         {user ? (
@@ -55,6 +57,7 @@ const App = () => {
           <Fragment>
             <NavLink to="/sign-up">Sign Up</NavLink>
             <NavLink to="/log-in">Log In</NavLink>
+        
           </Fragment>
         )}
       </nav>

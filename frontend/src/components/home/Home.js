@@ -4,20 +4,28 @@ import actions from '../../api/index'
 
 
 const Home = (props) => {
-  let [fruit, setFruit] = useState('kiwi')
+  //   let [fruit, setFruit] = useState('kiwi')
 
-  useEffect(()=>{
-    setFruit('passion fruit')
-  }, [])
+  //   useEffect(()=>{
+  //     setFruit('passion fruit')
+  //   }, [])
 
-  const changeFruit = () => {
-    setFruit("pineapple")
+  //   const changeFruit = () => {
+  //     setFruit("pineapple")
+  //   }
+  const addingPosts = async () => {
+
+    let res = await actions.addPost({ coolbeanz: true })
+    console.log(res)
+
+
+
   }
-
-  return( 
+  return (
     <div>
-      Home {fruit}
-      <button onClick={changeFruit}>Change Fruit</button>
+      Home
+      <button onClick={addingPosts}>Change Fruit</button>
+
     </div>
   )
 }
