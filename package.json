@@ -18,5 +18,11 @@
     "url": "https://github.com/Tzikas/IronPlate/issues"
   },
   "homepage": "https://github.com/Tzikas/IronPlate#readme",
+<<<<<<< HEAD
   "keywords": []
+=======
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+>>>>>>> 2bb892be77a5f7c0a6baa46c0e9a8c4e8927b8fe
 }
