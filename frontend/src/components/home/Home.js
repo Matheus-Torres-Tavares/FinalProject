@@ -18,6 +18,7 @@ const Home = (props) => {
   //   }
   let { user } = React.useContext(TheContext)
   const [post, setPost] = useState({})
+  const [postList, setPostList] = useState()
   const addingPosts = async () => {
 
     let res = await actions.addPost({ title: "ballsack, they are cool", username: "Motherfucker Jones", text: "hello hello", })
@@ -30,6 +31,10 @@ const Home = (props) => {
     // console.log(coolBeanz)
 
   }
+  const getPosts = async () => {
+    let res = await actions.getPosts({limit: 15})
+    setPostList(res.data.posts)
+  }
   return (
     <div>
       Home
@@ -41,13 +46,22 @@ const Home = (props) => {
       <br></br>
       <br></br>
       <button onClick={addingPosts}>Add Post</button>
+      <button onClick={getPosts}>Get Posts</button>
       {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
 
         <NewPost />
       ) : <p></p>}
 
-
+      {postList?.map(post => {
+        console.log(post)
+        return (
+          <div>
+            <h3>{post.title}</h3>
+            <p>{post.username}</p>
+          </div>
+        )
+      })}
 
     </div>
   )

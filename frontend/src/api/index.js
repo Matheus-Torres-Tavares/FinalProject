@@ -39,6 +39,10 @@ const actions = {
   addPost: async (post) => {
     let res = await API.post('/addpost',  post  , resetHead())
     return res
+  },
+  getPosts: async (filter) => {
+    console.log(filter)
+    return await API.get(`/getposts?limit=${filter.limit}`, filter, resetHead())
   }
 };
 
