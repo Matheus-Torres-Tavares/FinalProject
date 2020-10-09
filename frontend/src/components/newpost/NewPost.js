@@ -9,9 +9,9 @@ function NewPost(props) {
     const [technologies, setTechnologies] = useState()
 
 
+    console.log(props.thePropUser?.name)
 
     async function handleSubmit(e) {
-        console.log(props.thePropUser?.name)
         e.preventDefault()
         console.log(title, text)
 
