@@ -1,8 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Posts = require('../models/Posts');
 const passport = require('../config/passport');
 const jwt = require('jsonwebtoken');
+
+router.post('/addpost', verifyToken, (req, res, next) => {
+  console.log('testing if this shit works')
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      console.log(authData)
+      res.status(403).json(err);
+    } else {
+      let post = req.body;
+      Posts.create(post).then((WereAddingApost) => {
+        res.json({ WereAddingApost });
+      });
+    }
+  })
+})
 
 
 router.post('/signup', (req, res, next) => {
@@ -35,6 +51,12 @@ router.get('/user', verifyToken, (req, res, next) => {
     }
   });
 });
+
+
+router.get('/newpost', (req, res) => {
+  res.render('/newpost')
+
+})
 
 
 
@@ -80,12 +102,12 @@ function verifyToken(req, res, next) {
 
 }
 
-router.post('/addpost', (req, res, next) => {
+// router.post('/addpost',(req, res, next) => {
 
-  console.log("in add post", req.body)
-  res.json({ hello: "whatever" })
+// console.log("in add post", req.body)
+// res.json({hello:false})
 
-})
+// })
 
 
 

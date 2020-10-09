@@ -2,6 +2,9 @@ const router = require("express").Router();
 
 const Post = require("../models/posts.js");
 
+
+
+
 router.route("/").get((req, res) => {
   Post.find()
     .then((posts) => res.json(posts))
@@ -26,6 +29,9 @@ router.route("/add").post((req, res) => {
     .then(() => res.json("Post added!"))
     .catch((err) => res.status(400).json("Error:" + err));
 });
+
+
+
 
 router.route("/:id").get((req, res) => {
   Post.findById(req.params.id)
