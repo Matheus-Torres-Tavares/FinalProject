@@ -36,11 +36,13 @@ const postSchema = new Schema({
   title: { type: String, required: true },
   username: { type: String, required: true },
   text: { type: String, required: true },
-  userID: { type: String },
+  userID: { type: Schema.Types.ObjectId },
   date: { type: Date, default: Date.now },
   technologies: { type: String, required: true }
   // comments: [commentSchema],
 });
+
+
 
 // const Comments = mongoose.model("Comment", commentSchema);
 
