@@ -13,19 +13,25 @@ const Home = (props) => {
   //   const changeFruit = () => {
   //     setFruit("pineapple")
   //   }
-  const addingPosts = async () => {
 
+
+
+
+  const [coolBeanz, setCoolBeanz] = useState()
+  const addingPosts = async () => {
     let res = await actions.addPost({ coolbeanz: true })
     console.log(res)
 
+    setCoolBeanz(res.data.hello)
 
+    console.log(coolBeanz)
 
   }
   return (
     <div>
       Home
       <button onClick={addingPosts}>Change Fruit</button>
-
+      <p>howdy{coolBeanz}</p>
     </div>
   )
 }
