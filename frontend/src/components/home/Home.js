@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
+import moment from 'moment'
 import actions from '../../api/index'
 import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
@@ -50,7 +51,7 @@ const Home = (props) => {
       {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
 
-        <NewPost />
+        <NewPost {...props}/>
       ) : <p></p>}
 
       {postList?.map(post => {
@@ -58,6 +59,7 @@ const Home = (props) => {
         return (
           <div>
             <h3>{post.title}</h3>
+            <p>{moment(post.date).format("MMM Do YY")}</p>
             <p>{post.username}</p>
           </div>
         )
