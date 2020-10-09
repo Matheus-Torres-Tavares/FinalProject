@@ -22,7 +22,7 @@ const Home = (props) => {
   const [postList, setPostList] = useState()
   const addingPosts = async () => {
 
-    let res = await actions.addPost({ title: "ballsack, they are cool", username: "Motherfucker Jones", text: "hello hello", })
+    let res = await actions.addPost({ title: " they are cool", username: "Motherfucker Jones", text: "hello hello", })
     console.log(res)
     setPost(res.data.WereAddingApost)
     console.log(post)
@@ -33,11 +33,11 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({limit: 15})
+    let res = await actions.getPosts({ limit: 15 })
     setPostList(res.data.posts)
   }
   const postAction = async (id) => {
-    alert('Post to '+id)
+    alert('Post to ' + id)
   }
   return (
     <div>
@@ -54,7 +54,7 @@ const Home = (props) => {
       {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
 
-        <NewPost {...props}/>
+        <NewPost {...props} />
       ) : <p></p>}
 
       {postList?.map(post => {
