@@ -58,7 +58,14 @@ router.get('/newpost', (req, res) => {
 
 })
 
-
+router.get('/getposts', (req, res) => {
+  console.log('----begin-----')
+  console.log(req.query)
+  Posts.find().limit(parseInt(req.query.limit)).sort({date: -1}).then(posts => {
+    console.log(posts)
+    res.status(200).json({ posts })
+  })
+})
 
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
