@@ -36,6 +36,9 @@ const Home = (props) => {
     let res = await actions.getPosts({limit: 15})
     setPostList(res.data.posts)
   }
+  const postAction = async (id) => {
+    alert('Post to '+id)
+  }
   return (
     <div>
       Home
@@ -58,8 +61,9 @@ const Home = (props) => {
         console.log(post)
         return (
           <div>
-            <h3>{post.title}</h3>
+            <Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link>
             <p>{moment(post.date).format("MMM Do YY")}</p>
+            <button onClick={() => postAction(post._id)}>Post to thread</button>
             <p>{post.username}</p>
           </div>
         )

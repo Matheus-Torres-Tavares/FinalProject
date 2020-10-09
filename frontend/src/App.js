@@ -10,6 +10,7 @@ import actions from "./api/index";
 import GoogleAuth from "./components/auth/GoogleAuth";
 import GoogleAuthLogin from "./components/auth/GoogleAuthLogin";
 import Navbar from "./components/navbar";
+import PostDetails from "./components/postdetails";
 import PostList from "./components/postlist";
 import EditPost from "./components/editpost";
 import CreatePost from "./components/createpost";
@@ -84,6 +85,12 @@ const App = () => {
           exact
           path="/newpost"
           render={(props) => <NewPost {...props} thePropUser={user} />}
+        />
+
+        <Route
+          exact
+          path="/post/:id"
+          render={(props) => <PostDetails {...props} thePropUser={user} />}
         />
 
         <Route component={NotFound} />
