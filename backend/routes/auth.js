@@ -7,14 +7,14 @@ const jwt = require('jsonwebtoken');
 
 router.post('/signup', (req, res, next) => {
   User.register(req.body, req.body.password)
-    .then((user) => { 
-      jwt.sign({user}, 'secretkey', { expiresIn: '30min' }, (err, token) => {
-        req.login(user, function(err,result){
-          res.status(201).json({...user._doc, token})
+    .then((user) => {
+      jwt.sign({ user }, 'secretkey', { expiresIn: '30min' }, (err, token) => {
+        req.login(user, function (err, result) {
+          res.status(201).json({ ...user._doc, token })
         })
       })
     })
-    .catch((err) => { 
+    .catch((err) => {
       console.log(err)
       res.status(500).json(err)
     });
@@ -23,7 +23,7 @@ router.post('/signup', (req, res, next) => {
 
 router.get('/user', verifyToken, (req, res, next) => {
   jwt.verify(req.token, 'secretkey', (err, authData) => {
-    if(err) {
+    if (err) {
       res.status(403).json(err);
     } else {
       // res.status(200).json(authData.user)
@@ -31,7 +31,7 @@ router.get('/user', verifyToken, (req, res, next) => {
       User.findById(authData.user._id).then(user => {
         res.status(200).json(user)
       }).catch(err => res.status(500).json(err))
-    
+
     }
   });
 });
@@ -41,8 +41,8 @@ router.get('/user', verifyToken, (req, res, next) => {
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
   const { user } = req;
-  jwt.sign({user}, 'secretkey', { expiresIn: '30min' }, (err, token) => {
-    res.status(200).json({...user._doc, token});
+  jwt.sign({ user }, 'secretkey', { expiresIn: '30min' }, (err, token) => {
+    res.status(200).json({ ...user._doc, token });
   })
 });
 
@@ -64,7 +64,7 @@ function verifyToken(req, res, next) {
   // Get auth header value
   const bearerHeader = req.headers['authorization'];
   // Check if bearer is undefined
-  if(typeof bearerHeader !== 'undefined') {
+  if (typeof bearerHeader !== 'undefined') {
     // Split at the space
     const bearer = bearerHeader.split(' ');
     // Get token from array
@@ -80,10 +80,10 @@ function verifyToken(req, res, next) {
 
 }
 
-router.post('/addpost',(req, res, next) => {
+router.post('/addpost', (req, res, next) => {
 
-console.log("in add post", req.body)
-res.json({hello:false})
+  console.log("in add post", req.body)
+  res.json({ hello: "whatever" })
 
 })
 
