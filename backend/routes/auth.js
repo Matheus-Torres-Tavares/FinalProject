@@ -13,6 +13,7 @@ router.post('/addpost', verifyToken, (req, res, next) => {
       res.status(403).json(err);
     } else {
       let post = req.body;
+      post.userID = authData.user._id
       Posts.create(post).then((WereAddingApost) => {
         res.json({ WereAddingApost });
       });
@@ -61,7 +62,7 @@ router.get('/newpost', (req, res) => {
 router.get('/getposts', (req, res) => {
   console.log('----begin-----')
   console.log(req.query)
-  Posts.find().limit(parseInt(req.query.limit)).sort({date: -1}).then(posts => {
+  Posts.find().populate("userID").limit(parseInt(req.query.limit)).sort({ date: -1 }).then(posts => {
     console.log(posts)
     res.status(200).json({ posts })
   })

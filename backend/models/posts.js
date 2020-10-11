@@ -36,9 +36,9 @@ const postSchema = new Schema({
   title: { type: String, required: true },
   username: { type: String, required: true },
   text: { type: String, required: true },
-  userID: { type: Schema.Types.ObjectId },
+  userID: { type: Schema.Types.ObjectId, ref: "User" },
   date: { type: Date, default: Date.now },
-  technologies: { type: String, required: true }
+  technologies: { type: String }
   // comments: [commentSchema],
 });
 
