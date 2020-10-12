@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import actions from '../api/index'
+import { Card, Form, Button } from 'react-bootstrap'
 
 function Comments(props) {
 
@@ -36,27 +37,35 @@ function Comments(props) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-
-                <input onChange={(e) => setText(e.target.value)}>
-
-
-
-                </input>
-                <input type="submit">
-
-
-
-                </input>
-                <div>{comments?.map(comment => {
-                    return (
-
-                        <p>{comment.text}</p>
-                    )
-                })}</div>
+            <Form onSubmit={handleSubmit}>
+                <div>
+                    <label> Leave your comment below:</label>
+                    <textarea className="form-control" onChange={(e) => setText(e.target.value)}>
+                    </textarea>
+                </div>
+                <div>
+                    <Button variant="primary" type="submit">Submit Post</Button>
+                </div>
+            </Form>
 
 
-            </form>
+
+            <div>{comments?.map(comment => {
+                return (
+                    <Card style={{ width: '45rem' }}>
+                        <Card.Body>
+                            <Card.Title>{comment.title}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">By: {comment.username}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">Posted on :{comment.date} </Card.Subtitle>
+                            <Card.Text>
+                                {comment.text}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+
+
+                )
+            })}</div>
         </div>
     )
 }
