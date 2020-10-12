@@ -25,7 +25,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({filter: { username: "Matheus Tavares" }})
+    let res = await actions.getPosts()
     setPostList(res.data.posts)
   }
   const postAction = async (id) => {
