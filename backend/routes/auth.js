@@ -83,11 +83,24 @@ router.get('/newpost', (req, res) => {
 })
 
 router.get('/getposts', (req, res) => {
-  console.log('----begin-----')
   console.log(req.query)
-  Posts.find().populate("userID").limit(parseInt(req.query.limit)).sort({ date: -1 }).then(posts => {
+  let query = JSON.parse(req.query['0'])
+  console.log(query)
+  const { filter, projection, options } = query
+  console.log(filter)
+  console.log(projection)
+  console.log(options)
+  Posts.find().populate("userID").sort({ date: -1 }).then(posts => {
     console.log(posts)
     res.status(200).json({ posts })
+  })
+})
+
+router.get(`/getOnePost`, (req, res) => {
+  console.log(`----let's get this bread----`)
+  Posts.findById(_id).then(post => {
+    console.log(post)
+    res.json({ post })
   })
 })
 

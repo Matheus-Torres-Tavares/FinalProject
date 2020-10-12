@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./css/app.css"
 import actions from '../../api/index'
 import TheContext from '../../TheContext'
+import { Form, Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function NewPost(props) {
     const [title, setTitle] = useState()
@@ -29,32 +31,28 @@ function NewPost(props) {
 
 
     return (
-        <>
-
-            <h1>Post Title</h1>
-
-            <h4>Title</h4>
-
-            <form onSubmit={handleSubmit}>
-                <input onChange={(e) => setTitle(e.target.value)} type="text" name="title">
-
+        <Form onSubmit={handleSubmit}>
+            <div className="form-group">
+                <label>Post Title:</label>
+                <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
                 </input>
-                <h4>Technologies used</h4>
-
-
-                <input onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
-
+            </div>
+            <div className="form-group">
+                <label>Technologies used:</label>
+                <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
                 </input>
+            </div>
+            <div className="form-group">
+                <label>Text:</label>
+                <textarea className="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
+                </textarea>
+            </div>
+            <button>Submit</button>
+        </Form>
 
-                <h3>Text</h3>
-                <input onChange={(e) => setText(e.target.value)} className="postbody" type="text" name="text">
-
-                </input>
-                <button>Submit</button>
-            </form>
 
 
-        </>
+
 
     )
 }
