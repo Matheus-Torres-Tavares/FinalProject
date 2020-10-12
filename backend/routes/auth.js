@@ -57,7 +57,10 @@ router.get('/newpost', (req, res) => {
 })
 
 router.get('/getposts', (req, res) => {
-  let query = JSON.parse(req.query['0'])
+  let query = {}
+  // If req.query isn't empty, change the query variable to the parameters
+  if (Object.entries(req.query).length !== 0) query = JSON.parse(req.query['0'])
+
   console.log(query)
   Posts.find(
     query.filter || null,
