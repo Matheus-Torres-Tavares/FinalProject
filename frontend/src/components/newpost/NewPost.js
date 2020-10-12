@@ -56,7 +56,7 @@ function NewPost(props) {
                 </textarea>
             </div>
 
-            <button>Submit</button>
+            <Button variant="primary" type="submit">Submit</Button>
         </Form>
 
 
