@@ -33,7 +33,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({filter: { username: "Matheus Tavares" }, projection: null, options: { "limit": 15 }})
+    let res = await actions.getPosts({filter: { username: "Matheus Tavares" }})
     setPostList(res.data.posts)
   }
   const postAction = async (id) => {
