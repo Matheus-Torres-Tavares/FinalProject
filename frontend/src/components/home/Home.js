@@ -14,6 +14,10 @@ const Home = (props) => {
   let { user } = React.useContext(TheContext)
   const [post, setPost] = useState({})
   const [postList, setPostList] = useState()
+  useEffect(() => {
+    getPosts()
+
+  }, [])
   const addingPosts = async () => {
 
     let res = await actions.addPost({ title: " they are cool", username: "Motherfucker Jones", text: "hello hello", })
@@ -24,11 +28,15 @@ const Home = (props) => {
 
 
 
+
   }
   const getPosts = async () => {
     let res = await actions.getPosts()
     setPostList(res.data.posts)
-    console.log(res.data.posts)
+    console.log(res.data
+    )
+
+
   }
   const postAction = async (id) => {
     alert('Post to ' + id)
@@ -53,11 +61,24 @@ const Home = (props) => {
       {user ? (
         <Fragment>
           <p> Greetings,  {user?.name}</p>
-          <Button onClick={getPosts}>Get Posts</Button>
+          {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
           <NewPost {...props} />
+          {postList?.map(post => {
+            console.log(post)
+            return (
+              <div>
+
+                <Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link>
+                <p>{moment(post.date).format("MMM Do YY")}</p>
+                <img src={post?.userID?.imageUrl} />
+                <Link to={`/post/${post._id}`}><Button onClick={() => postAction(post._id)}>Post to thread</Button></Link>
+                <p>{post.username}</p>
+              </div>
+            )
+          })}
 
 
         </Fragment>
@@ -65,18 +86,6 @@ const Home = (props) => {
       ) : <p>Login to see posts</p>}
 
 
-      {postList?.map(post => {
-        console.log(post)
-        return (
-          <div>
-
-            <Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link>
-            <p>{moment(post.date).format("MMM Do YY")}</p>
-            <Link to={`/post/${post._id}`}><Button onClick={() => postAction(post._id)}>Post to thread</Button></Link>
-            <p>{post.username}</p>
-          </div>
-        )
-      })}
 
     </div>
   )
