@@ -5,7 +5,7 @@ import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
 import { Switch, Route, NavLink, useHistory, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 
 
 const Home = (props) => {
@@ -69,11 +69,14 @@ const Home = (props) => {
         console.log(post)
         return (
           <div>
+            <Card style={{ width: '35rem' }}>
+              <Card.Body>
+                <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">By: {post.username}</Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(post.date).format("MMM Do YY")} </Card.Subtitle>
+              </Card.Body>
+            </Card>
 
-            <Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link>
-            <p>{moment(post.date).format("MMM Do YY")}</p>
-            <Link to={`/post/${post._id}`}><Button onClick={() => postAction(post._id)}>Post to thread</Button></Link>
-            <p>{post.username}</p>
           </div>
         )
       })}
