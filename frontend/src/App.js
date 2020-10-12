@@ -16,6 +16,7 @@ import EditPost from "./components/editpost";
 import CreatePost from "./components/createpost";
 import CreateUser from "./components/createuser";
 import NewPost from "./components/newpost/NewPost"
+import Comments from "./components/Comments"
 
 import {
   NotificationContainer,
@@ -89,9 +90,19 @@ const App = () => {
 
         <Route
           exact
+          path="/addcomment"
+          render={(props) => <Comments {...props} thePropUser={user} />}
+        />
+
+
+
+        <Route
+          exact
           path="/post/:id"
           render={(props) => <PostDetails {...props} thePropUser={user} />}
         />
+
+
 
         <Route component={NotFound} />
       </Switch>
