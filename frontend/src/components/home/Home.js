@@ -24,6 +24,7 @@ const Home = (props) => {
 
     let res = await actions.addPost({ title: " they are cool", username: "Motherfucker Jones", text: "hello hello", })
     console.log(res)
+
     setPost(res.data.WereAddingApost)
     console.log(post)
 

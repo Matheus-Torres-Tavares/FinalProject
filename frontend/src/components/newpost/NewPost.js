@@ -12,6 +12,7 @@ function NewPost(props) {
     console.log(props.thePropUser?.name)
 
     async function handleSubmit(e) {
+        console.log(props)
         e.preventDefault()
         console.log(title, text)
 

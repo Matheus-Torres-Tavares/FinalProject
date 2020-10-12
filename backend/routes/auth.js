@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Posts = require('../models/Posts');
+const Comments = require('../models/Comment')
 const passport = require('../config/passport');
 const jwt = require('jsonwebtoken');
 
@@ -16,10 +17,32 @@ router.post('/addpost', verifyToken, (req, res, next) => {
       post.userID = authData.user._id
       Posts.create(post).then((WereAddingApost) => {
         res.json({ WereAddingApost });
+        console.log("post created")
       });
     }
   })
 })
+
+router.post('/addcomment', verifyToken, (req, res, next) => {
+  console.log('testing if this shit works')
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      console.log(authData)
+      res.status(403).json(err);
+    } else {
+      let comment = req.body;
+      console.log(req.body, "iguana")
+      comment.userID = authData.user._id
+      Comments.create(comment).then((WereAddingComments) => {
+        res.json({ WereAddingComments });
+        console.log("Comment Created!")
+
+      });
+    }
+  })
+})
+
+
 
 
 router.post('/signup', (req, res, next) => {
@@ -84,14 +107,15 @@ router.post("/showDetails", verifyToken, (req, res) => {
     if (err) {
       res.status(403).json(err);
     } else {
-      Posts.findById(
-        req.body.postId
+      Posts.findById(req.body.postID).then(user => {
+        Comments.find({ postID: req.body.postID })
+          .then((comments) => {
+            console.log(req.body.postID, "elephant")
+            console.log(comments)
+            res.json({ comments, user });
+          });
+      })
 
-      ).then((user) => {
-        console.log(req.body.postId)
-        console.log(user)
-        res.json({ user });
-      });
     }
   });
 });
@@ -140,12 +164,6 @@ function verifyToken(req, res, next) {
 
 }
 
-// router.post('/addpost',(req, res, next) => {
-
-// console.log("in add post", req.body)
-// res.json({hello:false})
-
-// })
 
 
 
