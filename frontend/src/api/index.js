@@ -37,6 +37,7 @@ const actions = {
     return await API.get('/logout', resetHead())
   },
   addPost: async (post) => {
+    console.log(post)
     let res = await API.post('/addpost', post, resetHead())
     return res
   },

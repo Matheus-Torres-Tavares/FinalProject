@@ -83,17 +83,16 @@ router.get('/newpost', (req, res) => {
 })
 
 router.get('/getposts', (req, res) => {
-  console.log(req.query)
-  let query = JSON.parse(req.query['0'])
+  let query = {}
+  // If req.query isn't empty, change the query variable to the parameters
+  if (Object.entries(req.query).length !== 0) query = JSON.parse(req.query['0'])
   console.log(query)
-  const { filter, projection, options } = query
-  console.log(filter)
-  console.log(projection)
-  console.log(options)
-  Posts.find().populate("userID").sort({ date: -1 }).then(posts => {
-    console.log(posts)
-    res.status(200).json({ posts })
-  })
+  Posts.find(
+    query.filter || null,
+    query.projection || null,
+    query.options || { sort: { date: -1 }, limit: 10 })
+    .populate("userID")
+    .then(posts => { res.status(200).json({ posts }) })
 })
 
 router.get(`/getOnePost`, (req, res) => {
