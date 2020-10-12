@@ -47,14 +47,6 @@ const actions = {
     return res
   },
 
-<<<<<<< HEAD
-  getOnePost: async (filter) => {
-    console.log(filter)
-    let res = await API.get(`/getOnePost`, resetHead())
-    return res
-  }
-=======
->>>>>>> 1cd7f6e7e3df8d7bb3dc54e4286a739547291916
 
   showDetails: async (data) => {
     console.log(data)

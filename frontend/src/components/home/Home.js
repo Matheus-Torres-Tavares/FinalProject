@@ -4,6 +4,7 @@ import actions from '../../api/index'
 import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
 import { Switch, Route, NavLink, useHistory, Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 const Home = (props) => {
