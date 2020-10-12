@@ -67,6 +67,15 @@ router.get('/getposts', (req, res) => {
     .then(posts => {res.status(200).json({ posts })})
 })
 
+router.get(`/getOnePost`, (req, res) => {
+  console.log(`----let's get this bread----`)
+  Posts.findById(_id).then(post => {
+    console.log(post)
+    res.json({ post })
+  })
+})
+
+
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
   const { user } = req;
   jwt.sign({ user }, 'secretkey', { expiresIn: '30min' }, (err, token) => {
