@@ -26,7 +26,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({ filter: { "limit": 15 } })
+    let res = await actions.getPosts()
     setPostList(res.data.posts)
     console.log(res.data.posts)
   }
@@ -36,7 +36,7 @@ const Home = (props) => {
   return (
     <div>
       Home
-      {props.thePropUser?.name} {user?.name}
+      {user?.name}
 
       <p>{post.username}</p>
       <br></br>
@@ -45,6 +45,7 @@ const Home = (props) => {
       <br></br>
       <Button onClick={addingPosts}>Add Post</Button>
       <Button onClick={getPosts}>Get Posts</Button>
+
       {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
 
