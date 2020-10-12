@@ -14,6 +14,7 @@ function NewPost(props) {
     console.log(props.thePropUser?.name)
 
     async function handleSubmit(e) {
+        console.log('test')
         e.preventDefault()
         console.log(title, text)
 
@@ -32,30 +33,30 @@ function NewPost(props) {
     return (
 
         <Form onSubmit={handleSubmit}>
-            <div class="form-group">
+            <div className="form-group">
                 <label>Post Title:</label>
-                <input class="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
+                <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
 
                 </input>
             </div>
-            <div class="form-group">
+            <div className="form-group">
 
                 <label>Technologies used:</label>
 
 
-                <input class="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
+                <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
 
                 </input>
             </div>
-            <div class="form-group">
+            <div className="form-group">
 
                 <label>Text:</label>
-                <textarea class="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
+                <textarea className="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
 
                 </textarea>
             </div>
 
-            <Button>Submit</Button>
+            <button>Submit</button>
         </Form>
 
 
