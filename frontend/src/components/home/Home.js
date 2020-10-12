@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, Fragment } from 'react';
 import moment from 'moment'
 import actions from '../../api/index'
 import TheContext from '../../TheContext'
@@ -33,32 +33,46 @@ const Home = (props) => {
   const postAction = async (id) => {
     alert('Post to ' + id)
   }
+
+
+
   return (
     <div>
-      Home
-      {user?.name}
 
-      <p>{post.username}</p>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <Button onClick={addingPosts}>Add Post</Button>
-      <Button onClick={getPosts}>Get Posts</Button>
 
+
+
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      {/* <Button onClick={addingPosts}>Add Post</Button> */}
+
+      <p> Welcome to DevLink</p>
       {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
+        <Fragment>
+          <p> Greetings,  {user?.name}</p>
+          <Button onClick={getPosts}>Get Posts</Button>
 
-        <NewPost {...props} />
-      ) : <p></p>}
+          {/* <Button onClick={getPosts}>Get Posts</Button> */}
+
+          <NewPost {...props} />
+
+
+        </Fragment>
+
+      ) : <p>Login to see posts</p>}
+
 
       {postList?.map(post => {
         console.log(post)
         return (
           <div>
+
             <Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link>
             <p>{moment(post.date).format("MMM Do YY")}</p>
-            <Button onClick={() => postAction(post._id)}>Post to thread</Button>
+            <Link to={`/post/${post._id}`}><Button onClick={() => postAction(post._id)}>Post to thread</Button></Link>
             <p>{post.username}</p>
           </div>
         )

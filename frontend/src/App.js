@@ -44,7 +44,7 @@ const App = () => {
   return (
 
     <TheContext.Provider value={{ history, user, setUser }}>
-      {user?.email}
+
       <nav>
 
         <NavLink to="/">Home</NavLink>

@@ -37,13 +37,14 @@ const PostDetails = (props) => {
                     <Card.Link href="#"> Contact Me</Card.Link>
                 </Card.Body>
             </Card>
-            <Comments {...props} />
-            <div>{comments?.map(comment => {
+            <Comments {...props} comments={comments} />
+
+            {/* <div>{comments?.map(comment => {
                 return (
 
                     <p>{comment.text}</p>
                 )
-            })}</div>
+            })}</div> */}
         </div>
 
 
