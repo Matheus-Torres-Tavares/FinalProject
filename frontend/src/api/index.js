@@ -45,6 +45,12 @@ const actions = {
     let res = await API.get(`/getposts?limit=${filter.limit}`, filter, resetHead())
     console.log(res)
     return res
+  },
+
+  getOnePost: async (filter) => {
+    console.log(filter)
+    let res = await API.get(`/getOnePost`, resetHead())
+    return res
   }
 
 
