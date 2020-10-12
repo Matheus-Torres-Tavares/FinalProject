@@ -84,10 +84,40 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
   })
 });
 
+
+router.post("/showDetails", verifyToken, (req, res) => {
+  console.log("From Line 95: ", req.body);
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    // console.log("From Line 97: ", authData);
+    if (err) {
+      res.status(403).json(err);
+    } else {
+      Posts.findById(
+        req.body.postId
+
+      ).then((user) => {
+        console.log(req.body.postId)
+        console.log(user)
+        res.json({ user });
+      });
+    }
+  });
+});
+
+
+
+
+
+
+
+
 router.get('/logout', (req, res, next) => {
   req.logout();
   res.status(200).json({ msg: 'Logged out' });
 });
+
+
+
 
 
 function isAuth(req, res, next) {
