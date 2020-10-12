@@ -35,19 +35,27 @@ function NewPost(props) {
             <div className="form-group">
                 <label>Post Title:</label>
                 <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
+
                 </input>
             </div>
             <div className="form-group">
+
                 <label>Technologies used:</label>
+
+
                 <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
+
                 </input>
             </div>
             <div className="form-group">
+
                 <label>Text:</label>
                 <textarea className="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
+
                 </textarea>
             </div>
-            <button>Submit</button>
+
+            <Button variant="primary" type="submit">Submit</Button>
         </Form>
 
 
