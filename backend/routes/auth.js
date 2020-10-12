@@ -21,7 +21,6 @@ router.post('/addpost', verifyToken, (req, res, next) => {
   })
 })
 
-
 router.post('/signup', (req, res, next) => {
   User.register(req.body, req.body.password)
     .then((user) => {
@@ -36,7 +35,6 @@ router.post('/signup', (req, res, next) => {
       res.status(500).json(err)
     });
 });
-
 
 router.get('/user', verifyToken, (req, res, next) => {
   jwt.verify(req.token, 'secretkey', (err, authData) => {
@@ -53,26 +51,21 @@ router.get('/user', verifyToken, (req, res, next) => {
   });
 });
 
-
 router.get('/newpost', (req, res) => {
   res.render('/newpost')
 
 })
 
 router.get('/getposts', (req, res) => {
-  console.log(req.query)
   let query = JSON.parse(req.query['0'])
   console.log(query)
-  const {filter, projection, options} = query
-  console.log(filter)
-  console.log(projection)
-  console.log(options)
-  Posts.find(filter, projection, options).populate("userID").sort({ date: -1 }).then(posts => {
-    console.log(posts)
-    res.status(200).json({ posts })
-  })
+  Posts.find(
+    query.filter || null,
+    query.projection || null,
+    query.options || { sort: { date: -1 }, limit: 10 })
+    .populate("userID")
+    .then(posts => {res.status(200).json({ posts })})
 })
-
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
   const { user } = req;
@@ -80,7 +73,6 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
     res.status(200).json({ ...user._doc, token });
   })
 });
-
 
 router.post("/showDetails", verifyToken, (req, res) => {
   console.log("From Line 95: ", req.body);
@@ -101,27 +93,14 @@ router.post("/showDetails", verifyToken, (req, res) => {
   });
 });
 
-
-
-
-
-
-
-
 router.get('/logout', (req, res, next) => {
   req.logout();
   res.status(200).json({ msg: 'Logged out' });
 });
 
-
-
-
-
 function isAuth(req, res, next) {
   req.isAuthenticated() ? next() : res.status(401).json({ msg: 'Log in first' });
 }
-
-
 
 // Verify Token
 function verifyToken(req, res, next) {
@@ -151,9 +130,5 @@ function verifyToken(req, res, next) {
 // res.json({hello:false})
 
 // })
-
-
-
-
 
 module.exports = router;
