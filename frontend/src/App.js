@@ -111,10 +111,15 @@ const App = () => {
 
         <Route
           exact
-          path="/post/:id"
+          path="/:type/:id"
           render={(props) => <PostDetails {...props} thePropUser={user} />}
         />
 
+        {/* <Route
+          exact
+          path="/kata/:id"
+          render={(props) => <PostDetails {...props} thePropUser={user} />}
+        /> */}
 
 
         <Route component={NotFound} />
