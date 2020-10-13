@@ -26,9 +26,10 @@ function Kata(props) {
 
 
     const getKata = async () => {
-        let res = await actions.getKatas()
-        setKataList(res?.data.kata)
-        console.log(res?.data.kata)
+        let res = await actions.getPosts({type: "kata"})
+        console.log(res?.data)
+        setKataList(res?.data.posts)
+        console.log(res?.data.posts)
         console.log(kataList)
 
 
