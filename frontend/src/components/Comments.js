@@ -12,11 +12,7 @@ function Comments(props) {
 
         let res = await actions.addComment({ text, userID: props.thePropUser?.googleId, username: props.thePropUser?.name, postID: props.match.params.id })
         console.log(res)
-
-
-
-
-
+        
     }
 
 
