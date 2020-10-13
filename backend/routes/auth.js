@@ -164,7 +164,11 @@ router.post("/showDetails", verifyToken, (req, res) => {
     if (err) {
       res.status(403).json(err);
     } else {
-      Posts.findById(req.body.postID).then(user => {
+      db = {
+        "post": Posts,
+        "kata": Katas
+      }
+      db[req.body.type].findById(req.body.postID).then(user => {
         Comments.find({ postID: req.body.postID })
           .then((comments) => {
             console.log(req.body.postID, "elephant")

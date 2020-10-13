@@ -13,7 +13,7 @@ const PostDetails = (props) => {
     console.log(props)
     useEffect(() => {
         async function getThePost() {
-            let res = await actions.showDetails({ postID: props.match.params.id })
+            let res = await actions.showDetails({ postID: props.match.params.id, type: props.match.params.type })
             setPostDetails(res.data.user)
             setComments(res?.data.comments)
             console.log(res.data.user)
