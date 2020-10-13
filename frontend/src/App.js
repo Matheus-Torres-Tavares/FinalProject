@@ -20,6 +20,7 @@ import NewPost from "./components/newpost/NewPost";
 import Comments from "./components/Comments";
 import Kata from "./components/Kata";
 import "../src/index.css"
+import Feedback from "./components/Feedback"
 
 import {
   NotificationContainer,
@@ -58,12 +59,12 @@ const App = () => {
               Log Out
             </NavLink>
             <NavLink to="/profile">Profile</NavLink>
-            <NavLink to="/kata">Katas</NavLink>
+
 
             <Nav defaultActiveKey="/home" className="flex-column test-nav ">
               <Nav.Link href="/">Collaborations</Nav.Link>
               <Nav.Link href="/kata">Katas</Nav.Link>
-              <Nav.Link href="/collab">Feedback</Nav.Link>
+              <Nav.Link href="/feedback">Feedback</Nav.Link>
             </Nav>
 
           </Fragment>
@@ -110,6 +111,13 @@ const App = () => {
         />
 
 
+        <Route
+          exact
+          path="/Feedback"
+          render={(props) => <Feedback {...props} thePropUser={user} />}
+        />
+
+
 
 
         <Route
@@ -131,6 +139,16 @@ const App = () => {
           path="/kata/:id"
           render={(props) => <PostDetails {...props} thePropUser={user} />}
         /> */}
+        {/* 
+        <Route
+          exact
+          path="/kata/:id"
+          render={(props) => <KataDetails {...props} thePropUser={user} />}
+        /> */}
+
+
+
+
 
 
         <Route component={NotFound} />

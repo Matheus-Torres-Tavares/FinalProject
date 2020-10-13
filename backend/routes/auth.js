@@ -4,8 +4,15 @@ const User = require('../models/User');
 const Posts = require('../models/Posts');
 const Comments = require('../models/Comment')
 const Katas = require('../models/Kata');
+const Feedbacks = require('../models/feedback')
 const passport = require('../config/passport');
 const jwt = require('jsonwebtoken');
+
+const models = {
+  "post": Posts,
+  "kata": Katas,
+  "feedback": Feedbacks,
+}
 
 router.post('/addpost', verifyToken, (req, res, next) => {
   console.log('testing if this shit works')
@@ -37,6 +44,24 @@ router.post('/addkata', verifyToken, (req, res, next) => {
       Katas.create(kata).then((WereAddingKata) => {
         res.json({ WereAddingKata });
         console.log("Kata solution created")
+      });
+    }
+  })
+})
+
+
+router.post('/addfeedback', verifyToken, (req, res, next) => {
+  console.log('testing if this shit works')
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      console.log(authData)
+      res.status(403).json(err);
+    } else {
+      let feedback = req.body;
+      feedback.userID = authData.user._id
+      Feedbacks.create(feedback).then((WereAddingFeedback) => {
+        res.json({ WereAddingFeedback });
+        console.log("Feedback post created")
       });
     }
   })
@@ -105,8 +130,8 @@ router.get('/getposts', (req, res) => {
   let query = {}
   // If req.query isn't empty, change the query variable to the parameters
   if (Object.entries(req.query).length !== 0) query = JSON.parse(req.query['0'])
-  console.log(query)
-  Posts.find(
+  console.log("query", query)
+  models[query.type].find(
     query.filter || null,
     query.projection || null,
     query.options || { sort: { date: -1 }, limit: 10 })
@@ -164,11 +189,7 @@ router.post("/showDetails", verifyToken, (req, res) => {
     if (err) {
       res.status(403).json(err);
     } else {
-      db = {
-        "post": Posts,
-        "kata": Katas
-      }
-      db[req.body.type].findById(req.body.postID).then(user => {
+      models[req.body.type].findById(req.body.postID).then(user => {
         Comments.find({ postID: req.body.postID })
           .then((comments) => {
             console.log(req.body.postID, "elephant")
@@ -176,7 +197,6 @@ router.post("/showDetails", verifyToken, (req, res) => {
             res.json({ comments, user });
           });
       })
-
     }
   });
 });
