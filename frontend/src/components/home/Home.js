@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
 import moment from 'moment'
 import actions from '../../api/index'
+import "../css/app.css"
 import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
 import { Switch, Route, NavLink, useHistory, Link } from "react-router-dom";
@@ -31,7 +32,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({type: "post", options: {limit: 15}})
+    let res = await actions.getPosts({ type: "post", options: { limit: 15 } })
     setPostList(res?.data.posts)
 
 
@@ -54,12 +55,12 @@ const Home = (props) => {
       <br></br>
       <br></br>
       {/* <Button onClick={addingPosts}>Add Post</Button> */}
-
+      <p> Greetings,  {user?.name}</p>
       <p> Welcome to DevLink</p>
       {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
         <Fragment>
-          <p> Greetings,  {user?.name}</p>
+
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
@@ -69,15 +70,29 @@ const Home = (props) => {
             console.log(post)
             return (
               <div>
-                <Card style={{ width: '35rem' }}>
+                {/* <Card style={{ width: '35rem' }}>
                   <Card.Body>
                     <img src={post?.userID?.imageUrl} />
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                   </Card.Body>
-                </Card>
+                </Card> */}
+                <br></br>
+                <br></br>
+                <br></br>
+                <Card>
+                  <Card.Header><h3>{post.title}</h3></Card.Header>
 
+                  <Card.Body>
+                    <img className="profilepic" src={post?.userID?.imageUrl} />
+                    <Card.Title>By: {post.username}</Card.Title>
+                    <Card.Text>
+                      Posted on :{moment(post.date).format("MMM Do YY")}
+                    </Card.Text>
+                    <Button variant="primary">See Post</Button>
+                  </Card.Body>
+                </Card>
               </div>
             )
           })}
