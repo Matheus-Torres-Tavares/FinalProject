@@ -115,7 +115,6 @@ router.get('/user', verifyToken, (req, res, next) => {
       User.findById(authData.user._id).then(user => {
         res.status(200).json(user)
       }).catch(err => res.status(500).json(err))
-
     }
   });
 });
@@ -190,7 +189,7 @@ router.post("/showDetails", verifyToken, (req, res) => {
       res.status(403).json(err);
     } else {
       models[req.body.type].findById(req.body.postID).then(user => {
-        Comments.find({ postID: req.body.postID })
+        Comments.find({ postID: req.body.postID }, null, { sort: { date: -1 } })
           .then((comments) => {
             console.log(req.body.postID, "elephant")
             console.log(comments)
