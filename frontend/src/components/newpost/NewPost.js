@@ -34,14 +34,14 @@ function NewPost(props) {
     return (
         <Form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label>Post Title:</label>
+                <label><b>Post Title:</b></label>
                 <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
 
                 </input>
             </div>
             <div className="form-group">
 
-                <label>Technologies used:</label>
+                <label><b>Technologies used:</b></label>
 
 
                 <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
@@ -50,8 +50,8 @@ function NewPost(props) {
             </div>
             <div className="form-group">
 
-                <label>Description:</label>
-                <textarea className="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
+                <label><b>Description:</b></label>
+                <textarea className="form-control text-area" onChange={(e) => setText(e.target.value)} type="text" name="text">
 
                 </textarea>
             </div>

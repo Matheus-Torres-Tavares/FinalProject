@@ -1,8 +1,15 @@
-.postbody{
+.postbody {
     width: 375px;
- height: 105px;
+    height: 105px;
 }
 
-.form-control{
+.form-control {
     height: 100px;
+    width: 500px !important;
+    margin-left: 2vh !important;
+
+}
+
+.text-area {
+    height: 150px !important;
 }
