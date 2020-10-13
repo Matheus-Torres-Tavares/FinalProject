@@ -8,6 +8,11 @@ const Feedbacks = require('../models/feedback')
 const passport = require('../config/passport');
 const jwt = require('jsonwebtoken');
 
+const models = {
+  "post": Posts,
+  "kata": Katas
+}
+
 router.post('/addpost', verifyToken, (req, res, next) => {
   console.log('testing if this shit works')
   jwt.verify(req.token, "secretkey", (err, authData) => {
@@ -124,8 +129,8 @@ router.get('/getposts', (req, res) => {
   let query = {}
   // If req.query isn't empty, change the query variable to the parameters
   if (Object.entries(req.query).length !== 0) query = JSON.parse(req.query['0'])
-  console.log(query)
-  Posts.find(
+  console.log("query", query)
+  models[query.type].find(
     query.filter || null,
     query.projection || null,
     query.options || { sort: { date: -1 }, limit: 10 })
@@ -183,12 +188,7 @@ router.post("/showDetails", verifyToken, (req, res) => {
     if (err) {
       res.status(403).json(err);
     } else {
-      db = {
-        "post": Posts,
-        "kata": Katas,
-
-      }
-      db[req.body.type].findById(req.body.postID).then(user => {
+      models[req.body.type].findById(req.body.postID).then(user => {
         Comments.find({ postID: req.body.postID })
           .then((comments) => {
             console.log(req.body.postID, "elephant")
@@ -196,7 +196,6 @@ router.post("/showDetails", verifyToken, (req, res) => {
             res.json({ comments, user });
           });
       })
-
     }
   });
 });
