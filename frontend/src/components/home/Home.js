@@ -31,7 +31,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts()
+    let res = await actions.getPosts({type: "post", options: {limit: 15}})
     setPostList(res?.data.posts)
 
 
