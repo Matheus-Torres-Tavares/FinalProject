@@ -21,7 +21,7 @@ function Comments(props) {
         console.log(res)
         let newComment = res.data.WereAddingComments
 
-        setComments([...comments, newComment])
+        setComments([newComment, ...comments])
 
 
 
