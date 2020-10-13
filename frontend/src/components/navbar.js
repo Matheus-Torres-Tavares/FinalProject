@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Link } from "react-router-dom";
 
-function Navbar(props) {
+function Navbar1(props) {
   return (
     <div className="bodytext">
       <nav>
@@ -33,4 +33,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default Navbar1;

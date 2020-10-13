@@ -5,7 +5,7 @@ import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
 import { Switch, Route, NavLink, useHistory, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button, Card } from 'react-bootstrap'
+import { Container, Button, Card } from 'react-bootstrap'
 
 
 const Home = (props) => {
@@ -31,7 +31,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({type: "post", options: {limit: 15}})
+    let res = await actions.getPosts({ type: "post", options: { limit: 15 } })
     setPostList(res?.data.posts)
 
 
@@ -44,15 +44,8 @@ const Home = (props) => {
 
 
   return (
-    <div>
+    <Container fluid>
 
-
-
-
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
       {/* <Button onClick={addingPosts}>Add Post</Button> */}
 
       <p> Welcome to DevLink</p>
@@ -89,7 +82,7 @@ const Home = (props) => {
 
 
 
-    </div>
+    </Container>
   )
 }
 
