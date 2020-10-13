@@ -3,6 +3,7 @@ import actions from '../api/index'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Form, Button } from 'react-bootstrap'
 import TheContext from '../TheContext'
+import Comments from '../components/Comments'
 
 
 
@@ -96,7 +97,7 @@ function Kata(props) {
                         </div>
                         <Button variant="primary" type="submit">Submit</Button>
                     </Form>
-
+                    <Comments />
 
                 </Fragment>
 
