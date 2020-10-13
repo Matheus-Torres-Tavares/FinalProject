@@ -32,9 +32,8 @@ const Home = (props) => {
   }
   const getPosts = async () => {
     let res = await actions.getPosts()
-    setPostList(res.data.posts)
-    console.log(res.data
-    )
+    setPostList(res?.data.posts)
+
 
 
   }
