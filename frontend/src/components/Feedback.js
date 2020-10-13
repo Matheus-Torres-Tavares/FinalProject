@@ -103,7 +103,7 @@ function Kata(props) {
                     <Card style={{ width: '35rem' }}>
                         <Card.Body>
                             <img src={kata?.userID?.imageUrl} />
-                            <Card.Title><Link to={`/kata/${kata._id}`}><h3>{kata.title}</h3></Link></Card.Title>
+                            <Card.Title><Link to={`/feedback/${kata._id}`}><h3>{kata.title}</h3></Link></Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">By: {kata.username}</Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
                         </Card.Body>
