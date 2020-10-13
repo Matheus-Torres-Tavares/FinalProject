@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const Posts = require('../models/Posts');
 const Comments = require('../models/Comment')
+const Katas = require('../models/Kata');
 const passport = require('../config/passport');
 const jwt = require('jsonwebtoken');
 
@@ -18,6 +19,24 @@ router.post('/addpost', verifyToken, (req, res, next) => {
       Posts.create(post).then((WereAddingApost) => {
         res.json({ WereAddingApost });
         console.log("post created")
+      });
+    }
+  })
+})
+
+
+router.post('/addkata', verifyToken, (req, res, next) => {
+  console.log('testing if this shit works')
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      console.log(authData)
+      res.status(403).json(err);
+    } else {
+      let kata = req.body;
+      kata.userID = authData.user._id
+      Katas.create(kata).then((WereAddingKata) => {
+        res.json({ WereAddingKata });
+        console.log("Kata solution created")
       });
     }
   })
@@ -94,6 +113,32 @@ router.get('/getposts', (req, res) => {
     .populate("userID")
     .then(posts => { res.status(200).json({ posts }) })
 })
+
+
+router.get('/getkatas', (req, res) => {
+  let query = {}
+  // If req.query isn't empty, change the query variable to the parameters
+  if (Object.entries(req.query).length !== 0) query = JSON.parse(req.query['0'])
+  console.log(query)
+  console.log("katas obtained")
+  Katas.find(
+    query.filter || null,
+    query.projection || null,
+    query.options || { sort: { date: -1 }, limit: 10 })
+    .populate("userID")
+    .then(kata => { res.status(200).json({ kata }) })
+
+
+
+
+
+
+
+
+})
+
+
+
 
 router.get(`/getOnePost`, (req, res) => {
   console.log(`----let's get this bread----`)
