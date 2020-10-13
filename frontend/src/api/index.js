@@ -77,7 +77,7 @@ const actions = {
 
   getKatas: async (data) => {
     console.log(data)
-    let res = await API.get(`getkatas`, data, resetHead())
+    let res = await API.get(`getkatas`, { params: JSON.stringify(data) }, resetHead())
     console.log(res)
     return res
   },
