@@ -10,7 +10,8 @@ const jwt = require('jsonwebtoken');
 
 const models = {
   "post": Posts,
-  "kata": Katas
+  "kata": Katas,
+  "feedback": Feedbacks,
 }
 
 router.post('/addpost', verifyToken, (req, res, next) => {
