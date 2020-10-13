@@ -1,8 +1,10 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import actions from '../api/index'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Card } from 'react-bootstrap'
 import TheContext from '../TheContext'
+import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 
 
@@ -52,25 +54,7 @@ function Kata(props) {
     return (
 
         <div>
-            {kataList?.map(kata => {
-                console.log(kata)
-                return (
-                    <div>
-                        <p>{kata.title}</p>
-                        <p>{kata.text}</p>
-                    </div>
 
-                )
-
-            })}
-
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
             {user ? (
                 <Fragment>
                     <Form onSubmit={handleSubmit}>
@@ -106,6 +90,22 @@ function Kata(props) {
 
                     </Fragment>
                 )}
+            {kataList?.map(kata => {
+                console.log(kata)
+                return (
+                    <Card style={{ width: '35rem' }}>
+                        <Card.Body>
+                            <img src={kata?.userID?.imageUrl} />
+                            <Card.Title><Link to={`/kata/${kata._id}`}><h3>{kata.title}</h3></Link></Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">By: {kata.username}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
+                        </Card.Body>
+                    </Card>
+
+
+                )
+
+            })}
 
         </div>
     )
