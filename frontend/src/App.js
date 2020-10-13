@@ -1,5 +1,6 @@
 import React, { Component, Fragment, useState, useEffect } from "react";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
+import { Nav } from 'react-bootstrap'
 import TheContext from "./TheContext";
 import Home from "./components/home/Home";
 import NotFound from "./components/404/NotFound.js";
@@ -15,9 +16,10 @@ import PostList from "./components/postlist";
 import EditPost from "./components/editpost";
 import CreatePost from "./components/createpost";
 import CreateUser from "./components/createuser";
-import NewPost from "./components/newpost/NewPost"
-import Comments from "./components/Comments"
-import Kata from "./components/Kata"
+import NewPost from "./components/newpost/NewPost";
+import Comments from "./components/Comments";
+import Kata from "./components/Kata";
+import "../src/index.css"
 import Feedback from "./components/Feedback"
 
 import {
@@ -57,18 +59,26 @@ const App = () => {
               Log Out
             </NavLink>
             <NavLink to="/profile">Profile</NavLink>
-            <NavLink to="/kata">Katas</NavLink>
-            <NavLink to="/feedback">Feedback</NavLink>
+
+
+            <Nav defaultActiveKey="/home" className="flex-column test-nav ">
+              <Nav.Link href="/">Collaborations</Nav.Link>
+              <Nav.Link href="/kata">Katas</Nav.Link>
+              <Nav.Link href="/feedback">Feedback</Nav.Link>
+            </Nav>
 
           </Fragment>
+
         ) : (
             <Fragment>
               <NavLink to="/sign-up">Sign Up</NavLink>
               <NavLink to="/log-in">Log In</NavLink>
 
             </Fragment>
-          )}
-      </nav>
+
+          )
+        }
+      </nav >
       <Switch>
         <Route exact path="/" render={(props) => <Home {...props} thePropUser={user} />} />
         <Route
@@ -143,11 +153,11 @@ const App = () => {
 
         <Route component={NotFound} />
       </Switch>
-      {!user && <GoogleAuth setUser={setUser} />}
-      {!user && <GoogleAuthLogin setUser={setUser} />}
+      { !user && <GoogleAuth setUser={setUser} />}
+      { !user && <GoogleAuthLogin setUser={setUser} />}
 
       <NotificationContainer />
-    </TheContext.Provider>
+    </TheContext.Provider >
   );
 };
 export default App;

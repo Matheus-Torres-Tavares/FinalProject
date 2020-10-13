@@ -13,16 +13,22 @@ code {
 
 
 nav {
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-nav a { 
-  background: #ccc;
+nav a {
+
   width: 33%;
   padding: 20px;
   margin: 5px;
 }
 
-
+.test-nav {
+  position: fixed;
+  z-index: 10000;
+  margin-top: 20vh;
+  margin-left: 85%;
+  align-items: flex-end;
+}
