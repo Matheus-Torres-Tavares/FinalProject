@@ -116,6 +116,13 @@ const App = () => {
         />
 
 
+        <Route
+          exact
+          path="/kata/:id"
+          render={(props) => <KataDetails {...props} thePropUser={user} />}
+        />
+
+
 
 
 
