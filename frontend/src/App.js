@@ -17,6 +17,7 @@ import CreatePost from "./components/createpost";
 import CreateUser from "./components/createuser";
 import NewPost from "./components/newpost/NewPost"
 import Comments from "./components/Comments"
+import Kata from "./components/Kata"
 
 import {
   NotificationContainer,
@@ -55,6 +56,8 @@ const App = () => {
               Log Out
             </NavLink>
             <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/kata">Katas</NavLink>
+
           </Fragment>
         ) : (
             <Fragment>
@@ -87,6 +90,16 @@ const App = () => {
           path="/newpost"
           render={(props) => <NewPost {...props} thePropUser={user} />}
         />
+
+
+        <Route
+          exact
+          path="/kata"
+          render={(props) => <Kata {...props} thePropUser={user} />}
+        />
+
+
+
 
         <Route
           exact

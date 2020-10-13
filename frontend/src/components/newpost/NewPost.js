@@ -4,6 +4,7 @@ import actions from '../../api/index'
 import TheContext from '../../TheContext'
 import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './css/app.css'
 
 function NewPost(props) {
     const [title, setTitle] = useState()
@@ -49,7 +50,7 @@ function NewPost(props) {
             </div>
             <div className="form-group">
 
-                <label>Text:</label>
+                <label>Description:</label>
                 <textarea className="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
 
                 </textarea>

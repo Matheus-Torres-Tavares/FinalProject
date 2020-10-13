@@ -2,3 +2,7 @@
     width: 375px;
  height: 105px;
 }
+
+.form-control{
+    height: 100px;
+}

@@ -42,6 +42,18 @@ const actions = {
     return res
   },
 
+  addKata: async (kata) => {
+
+    console.log(kata)
+
+    let res = await API.post('/addkata', kata, resetHead())
+
+    return res
+
+
+
+  },
+
 
 
   addComment: async (comment) => {
@@ -52,6 +64,13 @@ const actions = {
   getPosts: async (query) => {
     console.log(query)
     let res = await API.get(`/getposts`, { params: JSON.stringify(query) }, resetHead())
+    console.log(res)
+    return res
+  },
+
+  getKatas: async (data) => {
+    console.log(data)
+    let res = await API.get(`getkatas`, data, resetHead())
     console.log(res)
     return res
   },
