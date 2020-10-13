@@ -11,7 +11,7 @@ import Comments from './Comments'
 
 
 
-function Kata(props) {
+function Feedback(props) {
     useEffect(() => {
         getKata()
 
@@ -42,12 +42,9 @@ function Kata(props) {
         console.log(props)
         e.preventDefault()
         console.log(title, text)
-        let res = await actions.addKata({ title, text, technologies, userID: props.thePropUser?.googleId, username: props.thePropUser?.name })
+        let res = await actions.addFeedback({ title, text, technologies, userID: props.thePropUser?.googleId, username: props.thePropUser?.name })
         console.log(res?.data)
     }
-
-
-
 
 
 
@@ -61,19 +58,20 @@ function Kata(props) {
             <br></br>
             <br></br>
             <br></br>
+            Feedback
             {user ? (
                 <Fragment>
                     <Form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <p> Greetings,  {user?.name}</p>
-                            <label>Coding Challenge:</label>
+                            <label>Project you wish to recieve feedback on:</label>
                             <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
 
                             </input>
                         </div>
                         <div className="form-group">
 
-                            <label>Language:</label>
+                            <label>Languages:</label>
                             <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
 
                             </input>
@@ -96,25 +94,11 @@ function Kata(props) {
 
                     </Fragment>
                 )}
-            {kataList?.map(kata => {
-                console.log(kata)
-                return (
-                    <Card style={{ width: '35rem' }}>
-                        <Card.Body>
-                            <img src={kata?.userID?.imageUrl} />
-                            <Card.Title><Link to={`/kata/${kata._id}`}><h3>{kata.title}</h3></Link></Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">By: {kata.username}</Card.Subtitle>
-                            <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
-                        </Card.Body>
-                    </Card>
 
 
-                )
-
-            })}
 
         </div>
     )
 }
 
-export default Kata
+export default Feedback

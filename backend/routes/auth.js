@@ -4,6 +4,7 @@ const User = require('../models/User');
 const Posts = require('../models/Posts');
 const Comments = require('../models/Comment')
 const Katas = require('../models/Kata');
+const Feedbacks = require('../models/feedback')
 const passport = require('../config/passport');
 const jwt = require('jsonwebtoken');
 
@@ -37,6 +38,24 @@ router.post('/addkata', verifyToken, (req, res, next) => {
       Katas.create(kata).then((WereAddingKata) => {
         res.json({ WereAddingKata });
         console.log("Kata solution created")
+      });
+    }
+  })
+})
+
+
+router.post('/addfeedback', verifyToken, (req, res, next) => {
+  console.log('testing if this shit works')
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      console.log(authData)
+      res.status(403).json(err);
+    } else {
+      let feedback = req.body;
+      feedback.userID = authData.user._id
+      Feedbacks.create(feedback).then((WereAddingFeedback) => {
+        res.json({ WereAddingFeedback });
+        console.log("Feedback post created")
       });
     }
   })
@@ -164,7 +183,12 @@ router.post("/showDetails", verifyToken, (req, res) => {
     if (err) {
       res.status(403).json(err);
     } else {
-      Posts.findById(req.body.postID).then(user => {
+      db = {
+        "post": Posts,
+        "kata": Katas,
+
+      }
+      db[req.body.type].findById(req.body.postID).then(user => {
         Comments.find({ postID: req.body.postID })
           .then((comments) => {
             console.log(req.body.postID, "elephant")

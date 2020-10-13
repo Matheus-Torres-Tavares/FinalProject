@@ -45,12 +45,19 @@ const actions = {
   addKata: async (kata) => {
 
     console.log(kata)
-
     let res = await API.post('/addkata', kata, resetHead())
-
     return res
 
 
+
+  },
+
+
+
+  addFeedback: async (feedback) => {
+    console.log(feedback)
+    let res = await API.post('/addfeedback', feedback, resetHead())
+    return res
 
   },
 
@@ -74,6 +81,16 @@ const actions = {
     console.log(res)
     return res
   },
+
+
+  // getFeedback: async (data) => {
+  //   console.log(data)
+  //   let res = await API.get(`getFeedback`, data, resetHead())
+  //   console.log(res)
+  //   return res
+  // },
+
+
 
 
   showDetails: async (data) => {
