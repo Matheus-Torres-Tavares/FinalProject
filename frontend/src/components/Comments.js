@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import actions from '../api/index'
+import { Card, Form, Button } from 'react-bootstrap'
 
 function Comments(props) {
 
     const [text, setText] = useState()
+    const [comments, setComments] = useState()
+    useEffect(() => {
 
+        console.log(props.comments)
+        setComments(props.comments)
+    }, [props])
+    console.log(props.comments)
     async function handleSubmit(e) {
         e.preventDefault()
         console.log(text)
@@ -12,7 +19,15 @@ function Comments(props) {
 
         let res = await actions.addComment({ text, userID: props.thePropUser?.googleId, username: props.thePropUser?.name, postID: props.match.params.id })
         console.log(res)
-        
+        let newComment = res.data.WereAddingComments
+        let newComments = comments
+        newComments.unshift(newComment)
+
+        setComments(newComments)
+
+
+
+
     }
 
 
@@ -22,22 +37,35 @@ function Comments(props) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-
-                <input onChange={(e) => setText(e.target.value)}>
-
-
-
-                </input>
-                <input type="submit">
-
-
-
-                </input>
+            <Form onSubmit={handleSubmit}>
+                <div>
+                    <label> Leave your comment below:</label>
+                    <textarea className="form-control" onChange={(e) => setText(e.target.value)}>
+                    </textarea>
+                </div>
+                <div>
+                    <Button variant="primary" type="submit">Submit Post</Button>
+                </div>
+            </Form>
 
 
 
-            </form>
+            <div>{comments?.map(comment => {
+                return (
+                    <Card style={{ width: '45rem' }}>
+                        <Card.Body>
+                            <Card.Title>{comment.title}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">By: {comment.username}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">Posted on :{comment.date} </Card.Subtitle>
+                            <Card.Text>
+                                {comment.text}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+
+
+                )
+            })}</div>
         </div>
     )
 }
