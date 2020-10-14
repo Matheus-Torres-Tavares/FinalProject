@@ -51,8 +51,8 @@ const App = () => {
 
     <TheContext.Provider value={{ history, user, setUser }}>
 
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+      <Navbar bg="dark" variant="dark" ClassName=".nav-area" >
+        <Navbar.Brand href="/"><img src={logo} width="77" height="30" alt='error' /></Navbar.Brand>
         <Nav className="mr-auto">
 
           {user ? (

@@ -13,3 +13,25 @@
 .text-area {
     height: 150px !important;
 }
+
+.nav-area {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.navbar {
+    font-size: 12px;
+    height: 50px;
+}
+
+a.nav-link {
+    height: 50px
+}
+
+a.navbar-brand {
+    height: 50px
+}
+
+h3 {
+    color: orange;
+}
