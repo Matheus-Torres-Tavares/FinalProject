@@ -31,6 +31,32 @@ router.post('/addpost', verifyToken, (req, res, next) => {
   })
 })
 
+// // router.post('/addvote', verifyToken, (req, res, next) => {
+// //   console.log('testing if this shit works')
+// //   jwt.verify(req.token, "secretkey", (err, authData) => {
+// //     if (err) {
+// //       console.log(authData)
+// //       res.status(403).json(err);
+// //     } else {
+// //       let post = req.body;
+// //       post.userID = authData.user._id
+// //       Posts.findByIdAndUpdate(post).then((AddingUpVote) => {
+// //         res.json({ AddingUpVote });
+// //         console.log("Added upvote")
+// //       });
+// //     }
+// //   })
+
+
+
+// })
+
+
+
+
+
+
+
 
 router.post('/addkata', verifyToken, (req, res, next) => {
   console.log('testing if this shit works')
@@ -115,7 +141,6 @@ router.get('/user', verifyToken, (req, res, next) => {
       User.findById(authData.user._id).then(user => {
         res.status(200).json(user)
       }).catch(err => res.status(500).json(err))
-
     }
   });
 });
@@ -134,7 +159,7 @@ router.get('/getposts', (req, res) => {
   models[query.type].find(
     query.filter || null,
     query.projection || null,
-    query.options || { sort: { date: -1 }, limit: 10 })
+    query.options || { sort: { date: -1 }, limit: 15 })
     .populate("userID")
     .then(posts => { res.status(200).json({ posts }) })
 })
@@ -190,7 +215,7 @@ router.post("/showDetails", verifyToken, (req, res) => {
       res.status(403).json(err);
     } else {
       models[req.body.type].findById(req.body.postID).then(user => {
-        Comments.find({ postID: req.body.postID })
+        Comments.find({ postID: req.body.postID }, null, { sort: { date: -1 } })
           .then((comments) => {
             console.log(req.body.postID, "elephant")
             console.log(comments)

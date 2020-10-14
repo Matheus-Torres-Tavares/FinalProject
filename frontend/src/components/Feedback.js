@@ -43,7 +43,7 @@ function Kata(props) {
         console.log(props)
         e.preventDefault()
         console.log(title, text)
-        let res = await actions.addKata({ title, text, technologies, userID: props.thePropUser?.googleId, username: props.thePropUser?.name })
+        let res = await actions.addFeedback({ title, text, technologies, userID: props.thePropUser?.googleId, username: props.thePropUser?.name })
         console.log(res?.data)
     }
 

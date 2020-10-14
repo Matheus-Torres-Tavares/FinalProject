@@ -20,10 +20,8 @@ function Comments(props) {
         let res = await actions.addComment({ text, userID: props.thePropUser?.googleId, username: props.thePropUser?.name, postID: props.match.params.id })
         console.log(res)
         let newComment = res.data.WereAddingComments
-        let newComments = comments
-        newComments.unshift(newComment)
 
-        setComments(newComments)
+        setComments([newComment, ...comments])
 
 
 

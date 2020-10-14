@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import "./css/app.css"
+import "../css/app.css"
 import actions from '../../api/index'
 import TheContext from '../../TheContext'
 import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './css/app.css'
+
 
 function NewPost(props) {
     const [title, setTitle] = useState()
