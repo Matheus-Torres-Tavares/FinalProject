@@ -52,13 +52,13 @@ const App = () => {
     <TheContext.Provider value={{ history, user, setUser }}>
 
       <Navbar bg="dark" variant="dark" ClassName=".nav-area" >
-        <Navbar.Brand href="/"><img src={logo} width="77" height="30" alt='error' /></Navbar.Brand>
         <Nav className="mr-auto">
+          <Navbar.Brand href="/"><img src={logo} width="77" height="30" alt='error' /></Navbar.Brand>
 
           {user ? (
             <Fragment>
               <Nav.Link onClick={logOut} to="/"> Log Out</Nav.Link>
-              <Nav.Link to="/profile">Profile? </Nav.Link>
+              <Nav.Link to="/profile">Account </Nav.Link>
 
             </Fragment>
           ) : (

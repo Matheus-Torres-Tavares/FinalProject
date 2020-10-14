@@ -10,6 +10,11 @@
 
 }
 
+nav {
+    display: flex;
+
+}
+
 .text-area {
     height: 150px !important;
 }
@@ -20,8 +25,14 @@
 }
 
 .navbar {
+
     font-size: 12px;
     height: 50px;
+
+}
+
+.mr-auto {
+    justify-content: center !important;
 }
 
 a.nav-link {
@@ -34,4 +45,5 @@ a.navbar-brand {
 
 h3 {
     color: orange;
+    font-size: 25px !important;
 }
