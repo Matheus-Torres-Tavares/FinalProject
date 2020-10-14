@@ -39,7 +39,7 @@ const postSchema = new Schema({
   userID: { type: Schema.Types.ObjectId, ref: "User" },
   date: { type: Date, default: Date.now },
   technologies: { type: String },
-  votes: { type: Number }
+  votes: { type: Number, type: Schema.Types.ObjectId }
   // comments: [commentSchema],
 });
 
