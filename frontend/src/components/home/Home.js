@@ -15,7 +15,9 @@ const Home = (props) => {
   let { user } = React.useContext(TheContext)
   const [post, setPost] = useState({})
   const [postList, setPostList] = useState()
-  const [votes, setVotes] = useState()
+  const [upVotes, setUpVotes] = useState(0)
+  const [downVotes, setDownVotes] = useState(0)
+  const [votes, setVotes] = useState(0)
   useEffect(() => {
     getPosts()
 
@@ -44,15 +46,23 @@ const Home = (props) => {
   }
 
 
-  // const addVotes = async () => {
+  const addVotes = async () => {
 
-  //   let res = await actions.addVote({ votes })
-  //   setVotes(res?.data)
-  //   console.log(votes)
-  //   console.log(props)
+    let res = await actions.addVote({ votes })
+    setVotes(res?.data)
+    console.log(votes)
+    console.log(props)
 
 
+  }
+
+  // function addVotes() {
+  //   setUpVotes(upVotes => upVotes + 1)
   // }
+
+  function decreaseVotes() {
+    setDownVotes(downVotes => downVotes - 1)
+  }
 
 
 
@@ -97,8 +107,10 @@ const Home = (props) => {
                       Posted on :{moment(post.date).format("MMM Do YY")}
                     </Card.Text>
                     <Button variant="primary">See Post</Button>
-                    {/* 
-                    <Button onClick={addVotes}>Upvotes:</Button> */}
+
+                    <Button onClick={addVotes}>Upvotes:</Button>
+                    <Button onClick={decreaseVotes}>downVotes:{downVotes}</Button>
+                    {/* <Button onClick={decreaseVotes}>Upvotes:</Button> */}
                   </Card.Body>
                 </Card>
               </div>
