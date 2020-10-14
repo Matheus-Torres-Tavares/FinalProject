@@ -28,7 +28,16 @@ nav a {
 .test-nav {
   position: fixed;
   z-index: 10000;
-  margin-top: 20vh;
-  margin-left: 85%;
-  align-items: flex-end;
+  margin-top: 10%;
+  margin-left: 80%;
+  text-align: right !important;
+  align-items: center;
+  border-right: 1px solid white;
+  background-color: grey
+}
+
+.nav-link {
+
+  width: 100%;
+  text-align: right,
 }

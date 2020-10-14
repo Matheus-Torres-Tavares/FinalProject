@@ -15,6 +15,7 @@ const Home = (props) => {
   let { user } = React.useContext(TheContext)
   const [post, setPost] = useState({})
   const [postList, setPostList] = useState()
+  const [votes, setVotes] = useState()
   useEffect(() => {
     getPosts()
 
@@ -32,7 +33,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({ type: "post", options: { limit: 15 } })
+    let res = await actions.getPosts({ type: "post" })
     setPostList(res?.data.posts)
 
 
@@ -41,6 +42,17 @@ const Home = (props) => {
   const postAction = async (id) => {
     alert('Post to ' + id)
   }
+
+
+  // const addVotes = async () => {
+
+  //   let res = await actions.addVote({ votes })
+  //   setVotes(res?.data)
+  //   console.log(votes)
+  //   console.log(props)
+
+
+  // }
 
 
 
@@ -82,7 +94,8 @@ const Home = (props) => {
                 <br></br>
                 <br></br>
                 <Card>
-                  <Card.Header><h3>{post.title}</h3></Card.Header>
+                  <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
+                  <Card.Header><Link to={`/post/${post._id}`}></Link><h3>{post.title}</h3></Card.Header>
 
                   <Card.Body>
                     <img className="profilepic" src={post?.userID?.imageUrl} />
@@ -91,6 +104,8 @@ const Home = (props) => {
                       Posted on :{moment(post.date).format("MMM Do YY")}
                     </Card.Text>
                     <Button variant="primary">See Post</Button>
+                    {/* 
+                    <Button onClick={addVotes}>Upvotes:</Button> */}
                   </Card.Body>
                 </Card>
               </div>

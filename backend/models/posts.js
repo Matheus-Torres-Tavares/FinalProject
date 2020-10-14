@@ -38,7 +38,8 @@ const postSchema = new Schema({
   text: { type: String, required: true },
   userID: { type: Schema.Types.ObjectId, ref: "User" },
   date: { type: Date, default: Date.now },
-  technologies: { type: String }
+  technologies: { type: String },
+  votes: { type: Number }
   // comments: [commentSchema],
 });
 
