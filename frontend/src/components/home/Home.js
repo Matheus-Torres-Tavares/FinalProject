@@ -31,7 +31,7 @@ const Home = (props) => {
 
   }
   const getPosts = async () => {
-    let res = await actions.getPosts({ type: "post", options: { limit: 15 } })
+    let res = await actions.getPosts({ type: "post" })
     setPostList(res?.data.posts)
 
 
@@ -67,7 +67,7 @@ const Home = (props) => {
                     <img src={post?.userID?.imageUrl} />
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: {post.username}</Card.Subtitle>
-                    <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(post.date).format("MMM Do YY")} </Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                   </Card.Body>
                 </Card>
 

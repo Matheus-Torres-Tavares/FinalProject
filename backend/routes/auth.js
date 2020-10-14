@@ -133,7 +133,7 @@ router.get('/getposts', (req, res) => {
   models[query.type].find(
     query.filter || null,
     query.projection || null,
-    query.options || { sort: { date: -1 }, limit: 10 })
+    query.options || { sort: { date: -1 }, limit: 15 })
     .populate("userID")
     .then(posts => { res.status(200).json({ posts }) })
 })
