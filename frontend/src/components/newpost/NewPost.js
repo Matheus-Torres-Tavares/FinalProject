@@ -24,7 +24,7 @@ function NewPost(props) {
         console.log(res)
 
 
-
+        if (props.getPosts) props.getPosts()
 
 
     }
