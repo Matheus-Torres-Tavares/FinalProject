@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Button, Card } from 'react-bootstrap'
 
 
+
 const Home = (props) => {
   console.log(props)
 
