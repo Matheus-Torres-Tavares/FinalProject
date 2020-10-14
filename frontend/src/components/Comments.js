@@ -52,7 +52,7 @@ function Comments(props) {
                 return (
                     <Card style={{ width: '45rem' }}>
                         <Card.Body>
-                            <Card.Title>{comment.title}</Card.Title>
+                            <Card.Title>{comment.title} </Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">By: {comment.username}</Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted">Posted on :{comment.date} </Card.Subtitle>
                             <Card.Text>
