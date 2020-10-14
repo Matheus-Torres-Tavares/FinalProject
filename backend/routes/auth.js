@@ -26,30 +26,33 @@ router.post('/addpost', verifyToken, (req, res, next) => {
       Posts.create(post).then((WereAddingApost) => {
         res.json({ WereAddingApost });
         console.log("post created")
+        console.log(req.body)
+        console.log(req.body.text)
+        console.log(post.userID)
       });
     }
   })
 })
 
-// // router.post('/addvote', verifyToken, (req, res, next) => {
-// //   console.log('testing if this shit works')
-// //   jwt.verify(req.token, "secretkey", (err, authData) => {
-// //     if (err) {
-// //       console.log(authData)
-// //       res.status(403).json(err);
-// //     } else {
-// //       let post = req.body;
-// //       post.userID = authData.user._id
-// //       Posts.findByIdAndUpdate(post).then((AddingUpVote) => {
-// //         res.json({ AddingUpVote });
-// //         console.log("Added upvote")
-// //       });
-// //     }
-// //   })
+router.post('/addvote', verifyToken, (req, res, next) => {
+  console.log('testing if this shit works')
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      console.log(authData)
+      res.status(403).json(err);
+    } else {
+      let post = req.body.votes;
+      post.userID = authData.user._id
+      Posts.findByIdAndUpdate(authData.user._id).then((AddingUpVote) => {
+        res.json({ AddingUpVote });
+        console.log("Added upvote")
+      });
+    }
+  })
 
 
 
-// })
+})
 
 
 

@@ -54,11 +54,11 @@ const actions = {
 
 
 
-  // addVote: async (upvote) => {
-  //   console.log(upvote)
-  //   let res = await API.post('/addvote', upvote, resetHead())
-  //   return res
-  // },
+  addVote: async (upvote) => {
+    console.log(upvote)
+    let res = await API.post('/addvote', upvote, resetHead())
+    return res
+  },
 
 
 
