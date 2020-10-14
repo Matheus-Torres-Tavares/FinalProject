@@ -21,6 +21,8 @@ import Kata from "./components/Kata";
 import "../src/index.css"
 import Feedback from "./components/Feedback"
 import { Navbar, Nav, } from 'react-bootstrap'
+import binary from './img/Dev_binary.png'
+import logo from './img/Dev_logo.png'
 
 import {
   NotificationContainer,
@@ -50,9 +52,9 @@ const App = () => {
     <TheContext.Provider value={{ history, user, setUser }}>
 
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">Dev_Link</Navbar.Brand>
+        <Navbar.Brand href="/"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
+
           {user ? (
             <Fragment>
               <Nav.Link onClick={logOut} to="/"> Log Out</Nav.Link>
