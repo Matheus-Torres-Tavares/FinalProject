@@ -57,18 +57,23 @@ const Home = (props) => {
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
-          <NewPost {...props} />
+          <NewPost {...props} getPosts={getPosts}/>
           {postList?.map(post => {
             console.log(post)
             return (
               <div>
-                <Card style={{ width: '35rem' }}>
+                <Card style={{ width: '35rem', flexDirection: 'row', alignItems: 'center' }}>
                   <Card.Body>
                     <img src={post?.userID?.imageUrl} />
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                   </Card.Body>
+                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
+                    <button className="btn">^</button>
+                    <p style={{ alignSelf: 'center', margin: 0, fontSize: '2.5rem' }}>0</p>
+                    <button className="btn">v</button>
+                  </div>
                 </Card>
 
               </div>
