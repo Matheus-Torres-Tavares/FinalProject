@@ -6,7 +6,7 @@ import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
 import { Switch, Route, NavLink, useHistory, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Button, Card } from 'react-bootstrap'
+import { Container, Button, Card } from 'react-bootstrap'
 
 
 const Home = (props) => {
@@ -57,15 +57,8 @@ const Home = (props) => {
 
 
   return (
-    <div>
+    <Container fluid>
 
-
-
-
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
       {/* <Button onClick={addingPosts}>Add Post</Button> */}
       <p> Greetings,  {user?.name}</p>
       <p> Welcome to DevLink</p>
@@ -87,7 +80,7 @@ const Home = (props) => {
                     <img src={post?.userID?.imageUrl} />
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: {post.username}</Card.Subtitle>
-                    <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(post.date).format("MMM Do YY")} </Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                   </Card.Body>
                 </Card> */}
                 <br></br>
@@ -119,7 +112,7 @@ const Home = (props) => {
 
 
 
-    </div>
+    </Container>
   )
 }
 

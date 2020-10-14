@@ -1,6 +1,5 @@
 import React, { Component, Fragment, useState, useEffect } from "react";
 import { Switch, Route, NavLink, useHistory } from "react-router-dom";
-import { Nav } from 'react-bootstrap'
 import TheContext from "./TheContext";
 import Home from "./components/home/Home";
 import NotFound from "./components/404/NotFound.js";
@@ -10,7 +9,7 @@ import Profile from "./components/profile/Profile";
 import actions from "./api/index";
 import GoogleAuth from "./components/auth/GoogleAuth";
 import GoogleAuthLogin from "./components/auth/GoogleAuthLogin";
-import Navbar from "./components/navbar";
+import Navbar1 from "./components/navbar";
 import PostDetails from "./components/postdetails";
 import PostList from "./components/postlist";
 import EditPost from "./components/editpost";
@@ -21,6 +20,7 @@ import Comments from "./components/Comments";
 import Kata from "./components/Kata";
 import "../src/index.css"
 import Feedback from "./components/Feedback"
+import { Navbar, Nav, } from 'react-bootstrap'
 
 import {
   NotificationContainer,
@@ -49,36 +49,36 @@ const App = () => {
 
     <TheContext.Provider value={{ history, user, setUser }}>
 
-      <nav>
-
-        <NavLink to="/">Home</NavLink>
-
-        {user ? (
-          <Fragment>
-            <NavLink onClick={logOut} to="/">
-              Log Out
-            </NavLink>
-            <NavLink to="/profile">Profile</NavLink>
-
-
-            <Nav defaultActiveKey="/home" className="flex-column test-nav ">
-              <Nav.Link href="/">Collaborations</Nav.Link>
-              <Nav.Link href="/kata">Katas</Nav.Link>
-              <Nav.Link href="/feedback">Feedback</Nav.Link>
-            </Nav>
-
-          </Fragment>
-
-        ) : (
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand href="/">Dev_Link</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link href="/">Home</Nav.Link>
+          {user ? (
             <Fragment>
-              <NavLink to="/sign-up">Sign Up</NavLink>
-              <NavLink to="/log-in">Log In</NavLink>
+              <Nav.Link onClick={logOut} to="/"> Log Out</Nav.Link>
+              <Nav.Link to="/profile">Profile? </Nav.Link>
 
             </Fragment>
+          ) : (
+              <Fragment>
+                <Nav.Link to="/sign-up">Sign Up</Nav.Link>
+                <Nav.Link to="/log-in">Log In</Nav.Link>
 
-          )
-        }
-      </nav >
+              </Fragment>
+
+            )}
+        </Nav>
+
+      </Navbar>
+      {user ? (<Nav className="peanuts" defaultActiveKey="/home" className="flex-column test-nav">
+        Sub-Forums
+        <Nav.Link href="/">Collaborations</Nav.Link>
+        <Nav.Link href="/kata">Katas</Nav.Link>
+        <Nav.Link href="/feedback">Feedback</Nav.Link>
+      </Nav>) : null}
+
+
+
       <Switch>
         <Route exact path="/" render={(props) => <Home {...props} thePropUser={user} />} />
         <Route
@@ -134,18 +134,6 @@ const App = () => {
           render={(props) => <PostDetails {...props} thePropUser={user} />}
         />
 
-        {/* <Route
-          exact
-          path="/kata/:id"
-          render={(props) => <PostDetails {...props} thePropUser={user} />}
-        /> */}
-        {/* 
-        <Route
-          exact
-          path="/kata/:id"
-          render={(props) => <KataDetails {...props} thePropUser={user} />}
-        /> */}
-
 
 
 
@@ -157,7 +145,7 @@ const App = () => {
       { !user && <GoogleAuthLogin setUser={setUser} />}
 
       <NotificationContainer />
-    </TheContext.Provider >
+    </TheContext.Provider>
   );
 };
 export default App;
