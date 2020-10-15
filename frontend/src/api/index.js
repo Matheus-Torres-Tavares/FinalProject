@@ -54,6 +54,15 @@ const actions = {
 
 
 
+  addVote: async (upvote) => {
+    console.log(upvote)
+    let res = await API.post('/addvote', upvote, resetHead())
+    return res
+  },
+
+
+
+
   addFeedback: async (feedback) => {
     console.log(feedback)
     let res = await API.post('/addfeedback', feedback, resetHead())
@@ -81,6 +90,16 @@ const actions = {
     console.log(res)
     return res
   },
+
+  DeleteAPost: async (id) => {
+    return await API.post("/DeleteAPost", { id }, resetHead());
+  },
+
+  vote: async (data) => {
+    return await API.post("/vote", data, resetHead());
+  },
+
+
 
 
   // getFeedback: async (data) => {

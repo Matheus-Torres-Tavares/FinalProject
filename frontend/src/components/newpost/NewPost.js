@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import "./css/app.css"
+import "../css/app.css"
 import actions from '../../api/index'
 import TheContext from '../../TheContext'
 import { Card, Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './css/app.css'
+
+
 
 function NewPost(props) {
     const [title, setTitle] = useState()
@@ -32,7 +33,7 @@ function NewPost(props) {
 
 
     return (
-        <Card style={{ width: '34rem' }}>
+        <Card className="formcard" style={{ width: '34rem' }}>
 
             <Form onSubmit={handleSubmit} >
                 <div className="form-group">

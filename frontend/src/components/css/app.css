@@ -10,6 +10,10 @@
 
 }
 
+.formcard{
+    margin-top:100px!important;
+}
+
 nav {
     display: flex;
 
@@ -19,6 +23,10 @@ nav {
     height: 150px !important;
 }
 
+
+
+.profilepic{
+    border-radius:40px !important;}
 .nav-area {
     display: flex !important;
     justify-content: space-between !important;
@@ -32,7 +40,7 @@ nav {
 }
 
 .mr-auto {
-    justify-content: center !important;
+    margin-right: auto !important;
 }
 
 a.nav-link {
@@ -46,4 +54,26 @@ a.navbar-brand {
 h3 {
     color: orange;
     font-size: 25px !important;
+}
+
+
+.form-group{
+    margin-top:0px;
+}
+
+
+.cardbody {
+    margin-top: 10px!important;
+
+  
+}
+
+
+.detailcard{
+   margin-top:50px!important;
+}
+
+.homecards{
+    padding: 0px!important;
+    margin-top:0px!important;
 }

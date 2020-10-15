@@ -12,6 +12,7 @@ const models = {
   "post": Posts,
   "kata": Katas,
   "feedback": Feedbacks,
+  "comment": Comments
 }
 
 router.post('/addpost', verifyToken, (req, res, next) => {
@@ -26,10 +27,81 @@ router.post('/addpost', verifyToken, (req, res, next) => {
       Posts.create(post).then((WereAddingApost) => {
         res.json({ WereAddingApost });
         console.log("post created")
+        console.log(req.body)
+        console.log(req.body.text)
+        console.log(post.userID)
       });
     }
   })
 })
+
+router.post("/DeleteAPost", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      res.status(403).json(err);
+    } else {
+      // res.status(200).json(authData.user)
+      // console.log(authData.user, "yolo");
+      console.log(req.body, "Yoloswag");
+      let post = req.body.id;
+      // post.userId = authData.user._id;
+      models[post.type].findByIdAndDelete(post.id).then((post) => {
+        console.log("post deleted!");
+        res.json({ post });
+      });
+    }
+  });
+});
+router.post('/vote', verifyToken, (req, res, next) => {
+  console.log('testing if this shit works')
+  jwt.verify(req.token, "secretkey", async (err, authData) => {
+    if (err) {
+      console.log(authData)
+      res.status(403).json(err);
+    } else {
+      if (req.body.vote == 1) {
+        let result = await Posts.updateOne({ _id: req.body.postId }, {
+          $addToSet: {
+            upVotes: authData.user._id
+          }
+        })
+
+        if (result.nModified === 0) {
+          //0 means, no modifikation, that means its already liked
+          await Posts.updateOne({ _id: req.body.postId }, {
+            $pull: {
+              upVotes: authData.user._id
+            }
+          })
+        }
+      } else {
+        let result = await Posts.updateOne({ _id: req.body.postId }, {
+          $addToSet: {
+            downVotes: authData.user._id
+          }
+        })
+
+        if (result.nModified === 0) {
+          //0 means, no modifikation, that means its already liked
+          await Posts.updateOne({ _id: req.body.postId }, {
+            $pull: {
+              downVotes: authData.user._id
+            }
+          })
+        }
+      }
+    }
+  })
+
+
+
+})
+
+
+
+
+
+
 
 
 router.post('/addkata', verifyToken, (req, res, next) => {
