@@ -23,20 +23,7 @@ function Comments(props) {
 
         setComments([newComment, ...comments])
 
-
-
-
     }
-
-    // const resetInput = async () => {
-    //     e.target.reset()
-
-
-    // }
-
-
-
-
 
 
     return (
