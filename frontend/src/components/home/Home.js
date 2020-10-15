@@ -50,13 +50,6 @@ const Home = (props) => {
   }
 
 
-  // const addVotes = async () => {
-
-  //   setUpVotes(upVotes => upVotes + 1)
-
-
-  // }
-
   const addVotes = async () => {
 
     let res = await actions.addVote({ votes })
@@ -68,10 +61,6 @@ const Home = (props) => {
 
   }
 
-  // function addVotes() {
-  //   setUpVotes(upVotes => upVotes + 1)
-  // }
-
   function decreaseVotes() {
     setDownVotes(downVotes => downVotes - 1)
   }
@@ -81,17 +70,8 @@ const Home = (props) => {
   return (
     <Container className="homecontainer" fluid>
 
-      {/* <Button onClick={addingPosts}>Add Post</Button> */}
-      {/* <p> Greetings,  {user?.name}</p> */}
-      {/* <p> Welcome to DevLink</p> */}
-      {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
         <Fragment>
-
-          {/* <Button onClick={getPosts}>Get Posts</Button> */}
-
-          {/* <Button onClick={getPosts}>Get Posts</Button> */}
-
           {showSubmit ? <NewPost {...props} getPosts={getPosts} setShowSubmit={setShowSubmit} /> : <button onClick={() => setShowSubmit(!showSubmit)} className="btn btn-primary" style={{ marginTop: '2rem' }}>Show Submit Form</button>}
           {postList?.map(post => {
             console.log(post)
@@ -110,15 +90,8 @@ const Home = (props) => {
                       getPosts()
                     }}>Delete</Button> : <></>}
                   </Card.Body>
-                  {/* <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
-                    <button className="btn">^</button>
-                    <p style={{ alignSelf: 'center', margin: 0, fontSize: '2.5rem' }}>0</p>
-                    <button className="btn">v</button>
-                  </div> */}
                 </Card>
-                <br></br>
-                <br></br>
-                <br></br>
+
 
               </div>
             )

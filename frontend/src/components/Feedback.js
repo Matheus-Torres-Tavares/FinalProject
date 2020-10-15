@@ -70,7 +70,7 @@ function Kata(props) {
             {/* Technologies used: */}
             {/* Description: */}
             {user && showSubmit ? (
-                <Fragment>
+                <Fragment >
                     <Card style={{ width: '34rem' }}>
                         <Form onSubmit={handleSubmit}>
                             <div className="form-group">
