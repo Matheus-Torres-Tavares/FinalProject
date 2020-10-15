@@ -61,8 +61,9 @@ router.post('/vote', verifyToken, (req, res, next) => {
     } else {
       let post = req.body
       console.log(post)
+      let result = null
       if (req.body.vote == 1) {
-        let result = await models[post.type].updateOne({ _id: req.body.postId }, {
+        result = await models[post.type].updateOne({ _id: req.body.postId }, {
           $addToSet: {
             upVotes: authData.user._id
           }
@@ -70,14 +71,15 @@ router.post('/vote', verifyToken, (req, res, next) => {
 
         if (result.nModified === 0) {
           //0 means, no modifikation, that means its already liked
-          await models[post.type].updateOne({ _id: req.body.postId }, {
+          result = await models[post.type].updateOne({ _id: req.body.postId }, {
             $pull: {
               upVotes: authData.user._id
             }
           })
         }
+
       } else {
-        let result = await models[post.type].updateOne({ _id: req.body.postId }, {
+        result = await models[post.type].updateOne({ _id: req.body.postId }, {
           $addToSet: {
             downVotes: authData.user._id
           }
@@ -85,13 +87,16 @@ router.post('/vote', verifyToken, (req, res, next) => {
 
         if (result.nModified === 0) {
           //0 means, no modifikation, that means its already liked
-          await models[post.type].updateOne({ _id: req.body.postId }, {
+          result = await models[post.type].updateOne({ _id: req.body.postId }, {
             $pull: {
               downVotes: authData.user._id
             }
           })
         }
+
       }
+      console.log(result, 'resultttt')
+      res.json(result)
     }
   })
 
@@ -194,8 +199,13 @@ router.get('/user', verifyToken, (req, res, next) => {
 });
 
 
-router.get('/newpost', (req, res) => {
-  res.render('/newpost')
+
+
+router.get('/all', async (req, res) => {
+  let posts = await Posts.find({}).populate("userID")
+  let katas = await Katas.find({}).populate("userID")
+  let feedbacks = await Feedbacks.find({}).populate("userID")
+  res.json({ all: [...posts, ...katas, ...feedbacks] })
 
 })
 

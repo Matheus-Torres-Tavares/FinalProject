@@ -23,6 +23,7 @@ import Feedback from "./components/Feedback"
 import { Navbar, Nav, Dropdown, DropdownButton, ButtonGroup, Card, ListGroup, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import binary from './img/Dev_binary.png'
 import logo from './img/Dev_logo.png'
+import All from './components/All/All'
 
 import {
   NotificationContainer,
@@ -142,6 +143,12 @@ const App = () => {
             exact
             path="/:type/:id"
             render={(props) => <PostDetails {...props} thePropUser={user} />}
+          />
+
+          <Route
+            exact
+            path="/all"
+            render={(props) => <All {...props} thePropUser={user} />}
           />
 
 
