@@ -82,6 +82,11 @@ const actions = {
     return res
   },
 
+  DeleteAPost: async (id) => {
+    return await API.post("/DeleteAPost", { id }, resetHead());
+  },
+
+
 
   // getFeedback: async (data) => {
   //   console.log(data)

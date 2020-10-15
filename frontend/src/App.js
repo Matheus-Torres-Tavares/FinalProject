@@ -51,8 +51,8 @@ const App = () => {
 
     <TheContext.Provider value={{ history, user, setUser }}>
 
-      <Navbar bg="dark" variant="dark" ClassName=".nav-area" >
-        <Nav className="mr-auto">
+      <Navbar bg="dark" variant="dark" >
+        <Nav>
           <Navbar.Brand href="/"><img src={logo} width="77" height="30" alt='error' /></Navbar.Brand>
 
           {user ? (
@@ -72,12 +72,14 @@ const App = () => {
         </Nav>
 
       </Navbar>
-      {user ? (<Nav className="peanuts" defaultActiveKey="/home" className="flex-column test-nav">
-        Sub-Forums
-        <Nav.Link href="/">Collaborations</Nav.Link>
-        <Nav.Link href="/kata">Katas</Nav.Link>
-        <Nav.Link href="/feedback">Feedback</Nav.Link>
-      </Nav>) : null}
+      {
+        user ? (<Nav defaultActiveKey="/home" className="flex-column test-nav">
+          Sub-Forums
+          <Nav.Link href="/">Collaborations</Nav.Link>
+          <Nav.Link href="/kata">Katas</Nav.Link>
+          <Nav.Link href="/feedback">Feedback</Nav.Link>
+        </Nav>) : null
+      }
 
 
 
@@ -147,7 +149,7 @@ const App = () => {
       { !user && <GoogleAuthLogin setUser={setUser} />}
 
       <NotificationContainer />
-    </TheContext.Provider>
+    </TheContext.Provider >
   );
 };
 export default App;

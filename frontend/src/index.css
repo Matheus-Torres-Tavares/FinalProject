@@ -42,3 +42,7 @@ nav a {
   width: 100%;
   text-align: right,
 }
+
+.mr-auto {
+  margin-right: auto !important;
+}

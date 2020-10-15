@@ -12,6 +12,7 @@ const models = {
   "post": Posts,
   "kata": Katas,
   "feedback": Feedbacks,
+  "comment": Comments
 }
 
 router.post('/addpost', verifyToken, (req, res, next) => {
@@ -30,6 +31,24 @@ router.post('/addpost', verifyToken, (req, res, next) => {
     }
   })
 })
+
+router.post("/DeleteAPost", verifyToken, (req, res) => {
+  jwt.verify(req.token, "secretkey", (err, authData) => {
+    if (err) {
+      res.status(403).json(err);
+    } else {
+      // res.status(200).json(authData.user)
+      // console.log(authData.user, "yolo");
+      console.log(req.body, "Yoloswag");
+      let post = req.body.id;
+      // post.userId = authData.user._id;
+      models[post.type].findByIdAndDelete(post.id).then((post) => {
+        console.log("post deleted!");
+        res.json({ post });
+      });
+    }
+  });
+});
 
 
 router.post('/addkata', verifyToken, (req, res, next) => {

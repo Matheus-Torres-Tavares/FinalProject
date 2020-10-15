@@ -58,6 +58,7 @@ function Comments(props) {
                             <Card.Text>
                                 {comment.text}
                             </Card.Text>
+                            <Button onClick={() => actions.DeleteAPost({ type: "comment", id: comment._id })}>Delete</Button>
                         </Card.Body>
                     </Card>
 
