@@ -14,6 +14,7 @@ const Home = (props) => {
   console.log(props)
 
   let { user } = React.useContext(TheContext)
+  console.log(user?._id)
   const [post, setPost] = useState({})
   const [postList, setPostList] = useState()
   const [upVotes, setUpVotes] = useState(0)
@@ -102,13 +103,13 @@ const Home = (props) => {
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                     <Button onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
                     <Button onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
-                    <Button onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button>
+                    {post.userID._id === user?._id ? <Button onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button> : <></>}
                   </Card.Body>
-                  <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
+                  {/* <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
                     <button className="btn">^</button>
                     <p style={{ alignSelf: 'center', margin: 0, fontSize: '2.5rem' }}>0</p>
                     <button className="btn">v</button>
-                  </div>
+                  </div> */}
                 </Card>
                 <br></br>
                 <br></br>
