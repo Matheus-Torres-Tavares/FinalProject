@@ -10,6 +10,15 @@
 
 }
 
+.formcard{
+    margin-top:100px!important;
+}
+
+nav {
+    display: flex;
+
+}
+
 .text-area {
     height: 150px !important;
 }
@@ -17,5 +26,54 @@
 
 
 .profilepic{
-    border-radius:40px !important;
+    border-radius:40px !important;}
+.nav-area {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.navbar {
+
+    font-size: 12px;
+    height: 50px;
+
+}
+
+.mr-auto {
+    justify-content: center !important;
+}
+
+a.nav-link {
+    height: 50px
+}
+
+a.navbar-brand {
+    height: 50px
+}
+
+h3 {
+    color: orange;
+    font-size: 25px !important;
+}
+
+
+.form-group{
+    margin-top:0px;
+}
+
+
+.cardbody {
+    margin-top: 10px!important;
+
+  
+}
+
+
+.detailcard{
+   margin-top:50px!important;
+}
+
+.homecards{
+    padding: 0px!important;
+    margin-top:0px!important;
 }

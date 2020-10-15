@@ -28,6 +28,12 @@ function Comments(props) {
 
     }
 
+    // const resetInput = async () => {
+    //     e.target.reset()
+
+
+    // }
+
 
 
 
@@ -38,7 +44,7 @@ function Comments(props) {
             <Form onSubmit={handleSubmit}>
                 <div>
                     <label> Leave your comment below:</label>
-                    <textarea className="form-control" onChange={(e) => setText(e.target.value)}>
+                    <textarea className="form-control" onChange={(e) => setText(e.target.value)} >
                     </textarea>
                 </div>
                 <div>
@@ -52,7 +58,7 @@ function Comments(props) {
                 return (
                     <Card style={{ width: '45rem' }}>
                         <Card.Body>
-                            <Card.Title>{comment.title}</Card.Title>
+                            <Card.Title>{comment.title} </Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">By: {comment.username}</Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted">Posted on :{comment.date} </Card.Subtitle>
                             <Card.Text>
