@@ -102,7 +102,9 @@ const Home = (props) => {
       ) : <p>Login to see posts</p>}
 
 
-
+      <footer className="footer">
+        <p>&copy;Copyright DevLink 2020 by <span>Matheus Tavares</span> <span>Sebastian Grana</span> <span>Anthony Gutilla</span></p>
+      </footer>
 
     </Container>
   )

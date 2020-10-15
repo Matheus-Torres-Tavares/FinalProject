@@ -98,8 +98,12 @@ function Kata(props) {
                             }}>Delete</Button> : <></>}
                         </Card.Body>
                     </Card>
+
                 )
             })}
+            <footer className="footer">
+                <p>&copy;Copyright DevLink 2020 by <span>Matheus Tavares</span> <span>Sebastian Grana</span> <span>Anthony Gutilla</span></p>
+            </footer>
         </div>
     )
 }
