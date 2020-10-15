@@ -61,6 +61,11 @@ nav a {
 
 }
 
+
+.appcontainer{
+  height: 100%!important;
+}
+
 .nav-link {
 
   width: 100%;

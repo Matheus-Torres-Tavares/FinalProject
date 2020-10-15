@@ -21,6 +21,7 @@ const Home = (props) => {
   const [upVotes, setUpVotes] = useState(0)
   const [downVotes, setDownVotes] = useState(0)
   const [votes, setVotes] = useState(0)
+
   useEffect(() => {
     getPosts()
 
@@ -78,7 +79,7 @@ const Home = (props) => {
 
 
   return (
-    <Container fluid>
+    <Container className="homecontainer" fluid>
 
       {/* <Button onClick={addingPosts}>Add Post</Button> */}
       {/* <p> Greetings,  {user?.name}</p> */}
@@ -104,7 +105,10 @@ const Home = (props) => {
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                     <Button className="votebtn" onClick={() => actions.vote({ type: "post", vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
                     <Button className="votebtn" onClick={() => actions.vote({ type: "post", vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
-                    {post.userID._id === user?._id ? <Button className="votebtn" onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button> : <></>}
+                    {post.userID._id === user?._id ? <Button className="votebtn" onClick={async () => {
+                      let res = await actions.DeleteAPost({ type: "post", id: post._id })
+                      getPosts()
+                    }}>Delete</Button> : <></>}
                   </Card.Body>
                   {/* <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
                     <button className="btn">^</button>
@@ -119,15 +123,7 @@ const Home = (props) => {
               </div>
             )
           })}
-          <div className="footer">
-            <div className="footerwords">
-              <h5 className="footertext">Copyright DevLink 2020 by</h5>
-              <h5 className="footertext">Matheus Tavares</h5>
-              <h5 className="footertext">Sebastian Grana</h5>
-              <h5 className="footertext">Anthony Gutilla</h5>
-            </div>
 
-          </div>
         </Fragment>
 
       ) : <p>Login to see posts</p>}
