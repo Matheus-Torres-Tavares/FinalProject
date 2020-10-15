@@ -104,7 +104,10 @@ const Home = (props) => {
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                     <Button onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
                     <Button onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
-                    {post.userID._id === user?._id ? <Button onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button> : <></>}
+                    {post.userID._id === user?._id ? <Button onClick={async () => {
+                      let res = await actions.DeleteAPost({ type: "post", id: post._id })
+                      getPosts()
+                      }}>Delete</Button> : <></>}
                   </Card.Body>
                   {/* <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
                     <button className="btn">^</button>
