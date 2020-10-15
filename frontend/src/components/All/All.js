@@ -48,7 +48,7 @@ function All() {
                             <Card className="cardbody" style={{ width: '60rem', height: '10rem' }}>
                                 <Card.Body >
                                     {/* <img src={post?.userID?.imageUrl} />  */}
-                                    <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
+                                    <Card.Title><Link to={`/${post.kind}/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                                     <Card.Subtitle className="mb-2 text-muted">By: <img src={post?.userID?.imageUrl} width="30px" height="30px" /> {post.username}</Card.Subtitle>
                                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                                     <Button className="votebtn" >↑{post.upVotes.length}</Button>
