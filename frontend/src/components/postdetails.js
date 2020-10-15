@@ -4,6 +4,7 @@ import Comments from '../components/Comments'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Card } from 'react-bootstrap'
 import TheContext from '../TheContext'
+import "./css/app.css"
 
 const PostDetails = (props) => {
     let { user } = React.useContext(TheContext)
@@ -32,7 +33,7 @@ const PostDetails = (props) => {
     return (
         <div>
 
-            <Card style={{ width: '35rem' }}>
+            <Card className="detailcard" style={{ width: '35rem' }}>
                 <Card.Body>
                     <p>{user?.email}</p>
                     <Card.Title>{postDetails.title}</Card.Title>

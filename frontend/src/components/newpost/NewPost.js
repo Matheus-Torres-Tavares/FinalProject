@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "../css/app.css"
 import actions from '../../api/index'
 import TheContext from '../../TheContext'
-import { Form, Button } from 'react-bootstrap'
+import { Card, Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -33,32 +33,35 @@ function NewPost(props) {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label>Post Title:</label>
-                <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
+        <Card className="formcard" style={{ width: '34rem' }}>
 
-                </input>
-            </div>
-            <div className="form-group">
+            <Form onSubmit={handleSubmit} >
+                <div className="form-group">
+                    <label><b>Post Title:</b></label>
+                    <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
 
-                <label>Technologies used:</label>
+                    </input>
+                </div>
+                <div className="form-group">
+
+                    <label><b>Technologies used:</b></label>
 
 
-                <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
+                    <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
 
-                </input>
-            </div>
-            <div className="form-group">
+                    </input>
+                </div>
+                <div className="form-group">
 
-                <label>Description:</label>
-                <textarea className="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
+                    <label><b>Description:</b></label>
+                    <textarea className="form-control text-area" onChange={(e) => setText(e.target.value)} type="text" name="text">
 
-                </textarea>
-            </div>
+                    </textarea>
+                </div>
 
-            <Button variant="primary" type="submit">Submit</Button>
-        </Form>
+                <Button variant="primary" type="submit">Submit</Button>
+            </Form>
+        </Card>
 
 
 

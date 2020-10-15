@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Button, Card } from 'react-bootstrap'
 
 
+
 const Home = (props) => {
   console.log(props)
 
@@ -78,8 +79,8 @@ const Home = (props) => {
     <Container fluid>
 
       {/* <Button onClick={addingPosts}>Add Post</Button> */}
-      <p> Greetings,  {user?.name}</p>
-      <p> Welcome to DevLink</p>
+      {/* <p> Greetings,  {user?.name}</p> */}
+      {/* <p> Welcome to DevLink</p> */}
       {/* <button ><Link to='/newpost'>Create a new Post!</Link></button> */}
       {user ? (
         <Fragment>
@@ -92,35 +93,19 @@ const Home = (props) => {
           {postList?.map(post => {
             console.log(post)
             return (
-              <div>
-                {/* <Card style={{ width: '35rem' }}>
-                  <Card.Body>
-                    <img src={post?.userID?.imageUrl} />
-                    <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">By: {post.username}</Card.Subtitle>
+              <div className="homecards">
+                <Card className="cardbody" style={{ width: '60rem', height: '10rem' }}>
+                  <Card.Body >
+                    {/* <img src={post?.userID?.imageUrl} />  */}
+                    <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">By: <img src={post?.userID?.imageUrl} width="30px" height="30px" /> {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
                   </Card.Body>
-                </Card> */}
-                <br></br>
-                <br></br>
-                <br></br>
-                <Card>
-                  <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title}</h3></Link></Card.Title>
-                  <Card.Header><Link to={`/post/${post._id}`}></Link><h3>{post.title}</h3></Card.Header>
-
-                  <Card.Body>
-                    <img className="profilepic" src={post?.userID?.imageUrl} />
-                    <Card.Title>By: {post.username}</Card.Title>
-                    <Card.Text>
-                      Posted on :{moment(post.date).format("MMM Do YY")}
-                    </Card.Text>
-                    <Button variant="primary">See Post</Button>
-
-                    <Button onClick={addVotes}>Upvotes:{upVotes}</Button>
-                    <Button onClick={decreaseVotes}>downVotes:{downVotes}</Button>
-                    {/* <Button onClick={decreaseVotes}>Upvotes:</Button> */}
-                  </Card.Body>
                 </Card>
+                <br></br>
+                <br></br>
+                <br></br>
+
               </div>
             )
           })}

@@ -6,6 +6,7 @@ import TheContext from '../TheContext'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import Comments from './Comments'
+import "./css/app.css"
 
 
 
@@ -64,30 +65,34 @@ function Kata(props) {
             <br></br>
             {user ? (
                 <Fragment>
-                    <Form onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <p> Greetings,  {user?.name}</p>
-                            <label>Coding Challenge:</label>
-                            <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
+                    <Card style={{ width: '34rem' }}>
+                        <Form onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <label><b>Project seeking feedback:</b></label>
+                                <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
 
-                            </input>
-                        </div>
-                        <div className="form-group">
+                                </input>
+                            </div>
+                            <div className="form-group">
 
-                            <label>Language:</label>
-                            <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
+                                <label><b>Technologies used:</b></label>
 
-                            </input>
-                        </div>
-                        <div className="form-group">
-                            <label>Text:</label>
-                            <textarea className="form-control" onChange={(e) => setText(e.target.value)} type="text" name="text">
 
-                            </textarea>
-                        </div>
-                        <Button variant="primary" type="submit">Submit</Button>
-                    </Form>
-                    <Comments />
+                                <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
+
+                                </input>
+                            </div>
+                            <div className="form-group">
+
+                                <label><b>Description:</b></label>
+                                <textarea className="form-control text-area" onChange={(e) => setText(e.target.value)} type="text" name="text">
+
+                                </textarea>
+                            </div>
+                            <Button variant="primary" type="submit">Submit</Button>
+                        </Form>
+                    </Card>
+                    {/* <Comments /> */}
 
                 </Fragment>
 
@@ -100,12 +105,12 @@ function Kata(props) {
             {kataList?.map(kata => {
                 console.log(kata)
                 return (
-                    <Card style={{ width: '35rem' }}>
-                        <Card.Body>
-                            <img src={kata?.userID?.imageUrl} />
-                            <Card.Title><Link to={`/feedback/${kata._id}`}><h3>{kata.title}</h3></Link></Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">By: {kata.username}</Card.Subtitle>
-                            <Card.Subtitle className="mb-2 text-muted">Posted on :{moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
+                    <Card className="cardbody" style={{ width: '60rem', height: '10rem' }}>
+                        <Card.Body >
+                            {/* <img src={post?.userID?.imageUrl} />  */}
+                            <Card.Title><Link to={`/post/${kata._id}`}><h3>{kata.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">By: <img src={kata?.userID?.imageUrl} width="30px" height="30px" /> {kata.username}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
                         </Card.Body>
                     </Card>
 
