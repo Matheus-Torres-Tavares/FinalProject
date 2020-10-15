@@ -49,122 +49,129 @@ const App = () => {
   const history = useHistory();
 
   return (
-    <div className="appcontainer">
-      <TheContext.Provider value={{ history, user, setUser }}>
-        {user ? (
+    <Fragment>
+      <div className="appcontainer">
+        <TheContext.Provider value={{ history, user, setUser }}>
+          {user ? (
 
-          <Fragment>
-            <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
-            {/* <nav className="testnav">
+            <Fragment>
+              <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+              {/* <nav className="testnav">
             <a className="firstlink" href="">hey</a>
             <a href="">dude</a>
           </nav> */}
-            <Navbar className="testnav" bg="dark" variant="dark">
+              <Navbar className="testnav" bg="dark" variant="dark">
 
-              <Nav className="mr-auto">
-                <Nav.Link href="/all">Home</Nav.Link>
-                <Nav.Link href="/profile">Profile</Nav.Link>
-                <Nav.Link onClick={logOut} to="/">Logout</Nav.Link>
-              </Nav>
+                <Nav className="mr-auto">
+                  <Nav.Link href="/all">Home</Nav.Link>
+                  <Nav.Link href="/profile">Profile</Nav.Link>
+                  <Nav.Link onClick={logOut} to="/">Logout</Nav.Link>
+                </Nav>
 
-            </Navbar>
-
-
-          </Fragment>
-        ) : (
-            <p></p>
-          )}
-        {user ? (
-          <Nav className="peanuts" defaultActiveKey="/home" className="flex-column test-nav">
-
-            <Card style={{ width: '18rem' }}>
-              <Card.Header className="forumhead"> <h3>Sub-Forums</h3></Card.Header>
-              <ListGroup variant="flush">
-                <ListGroup.Item Link to="/"><Nav.Link href="/"><h4>Collaborations</h4></Nav.Link></ListGroup.Item>
-                <ListGroup.Item Link to="/kata"> <Nav.Link href="/kata"><h4>Kata</h4></Nav.Link></ListGroup.Item>
-                <ListGroup.Item Link to="/feedback"> <Nav.Link href="/feedback"><h4>Feedback</h4></Nav.Link></ListGroup.Item>
-              </ListGroup>
-            </Card>
-
-          </Nav>) : null}
+              </Navbar>
 
 
+            </Fragment>
+          ) : (
+              <p></p>
+            )}
+          {user ? (
+            <Nav className="peanuts" defaultActiveKey="/home" className="flex-column test-nav">
 
-        <Switch>
-          <Route exact path="/" render={(props) => <Home {...props} thePropUser={user} />} />
-          <Route
-            exact
-            path="/sign-up"
-            render={(props) => <SignUp {...props} setUser={setUser} />}
-          />
-          <Route
-            exact
-            path="/log-in"
-            render={(props) => <LogIn {...props} setUser={setUser} />}
-          />
-          <Route
-            exact
-            path="/profile"
-            render={(props) => <Profile {...props} />}
-          />
+              <Card style={{ width: '18rem' }}>
+                <Card.Header className="forumhead"> <h3>Sub-Forums</h3></Card.Header>
+                <ListGroup variant="flush">
+                  <ListGroup.Item Link to="/"><Nav.Link href="/"><h4>Collaborations</h4></Nav.Link></ListGroup.Item>
+                  <ListGroup.Item Link to="/kata"> <Nav.Link href="/kata"><h4>Kata</h4></Nav.Link></ListGroup.Item>
+                  <ListGroup.Item Link to="/feedback"> <Nav.Link href="/feedback"><h4>Feedback</h4></Nav.Link></ListGroup.Item>
+                </ListGroup>
+              </Card>
 
-          <Route
-            exact
-            path="/newpost"
-            render={(props) => <NewPost {...props} thePropUser={user} />}
-          />
-
-
-          <Route
-            exact
-            path="/kata"
-            render={(props) => <Kata {...props} thePropUser={user} />}
-          />
-
-
-          <Route
-            exact
-            path="/Feedback"
-            render={(props) => <Feedback {...props} thePropUser={user} />}
-          />
+            </Nav>) : null}
 
 
 
+          <Switch>
+            <Route exact path="/" render={(props) => <Home {...props} thePropUser={user} />} />
+            <Route
+              exact
+              path="/sign-up"
+              render={(props) => <SignUp {...props} setUser={setUser} />}
+            />
+            <Route
+              exact
+              path="/log-in"
+              render={(props) => <LogIn {...props} setUser={setUser} />}
+            />
+            <Route
+              exact
+              path="/profile"
+              render={(props) => <Profile {...props} />}
+            />
 
-          <Route
-            exact
-            path="/addcomment"
-            render={(props) => <Comments {...props} thePropUser={user} />}
-          />
+            <Route
+              exact
+              path="/newpost"
+              render={(props) => <NewPost {...props} thePropUser={user} />}
+            />
 
 
+            <Route
+              exact
+              path="/kata"
+              render={(props) => <Kata {...props} thePropUser={user} />}
+            />
 
-          <Route
-            exact
-            path="/:type/:id"
-            render={(props) => <PostDetails {...props} thePropUser={user} />}
-          />
 
-          <Route
-            exact
-            path="/all"
-            render={(props) => <All {...props} thePropUser={user} />}
-          />
+            <Route
+              exact
+              path="/Feedback"
+              render={(props) => <Feedback {...props} thePropUser={user} />}
+            />
 
 
 
 
+            <Route
+              exact
+              path="/addcomment"
+              render={(props) => <Comments {...props} thePropUser={user} />}
+            />
 
 
-          <Route component={NotFound} />
-        </Switch>
-        {!user && <GoogleAuth setUser={setUser} />}
-        {!user && <GoogleAuthLogin setUser={setUser} />}
 
-        <NotificationContainer />
+            <Route
+              exact
+              path="/:type/:id"
+              render={(props) => <PostDetails {...props} thePropUser={user} />}
+            />
 
-      </TheContext.Provider>
-    </div>
+            <Route
+              exact
+              path="/all"
+              render={(props) => <All {...props} thePropUser={user} />}
+            />
+
+
+
+
+
+
+            <Route component={NotFound} />
+          </Switch>
+          {!user && <GoogleAuth setUser={setUser} />}
+          {!user && <GoogleAuthLogin setUser={setUser} />}
+
+          <NotificationContainer />
+
+        </TheContext.Provider>
+
+
+      </div>
+      <footer className="footer">
+        <p>&copy;Copyright DevLink 2020 by <span>Matheus Tavares</span> <span>Sebastian Grana</span> <span>Anthony Gutilla</span></p>
+      </footer>
+    </Fragment>
   );
 };
 export default App;

@@ -23,6 +23,13 @@ function Comments(props) {
 
         setComments([newComment, ...comments])
 
+
+    }
+    async function handleVote(vote) {
+        console.log(vote)
+        let res = await actions.vote(vote)
+        console.log(res)
+        props.history.go(0)
     }
 
 
@@ -51,8 +58,8 @@ function Comments(props) {
                             <Card.Text>
                                 {comment.text}
                             </Card.Text>
-                            <Button onClick={() => actions.vote({ type: "comment", vote: 1, postId: comment._id })}>↑{comment.upVotes.length}</Button>
-                            <Button onClick={() => actions.vote({ type: "comment", vote: -1, postId: comment._id })}>↓{comment.downVotes.length}</Button>
+                            <Button className="votebtn" onClick={() => handleVote({ type: "comment", vote: 1, postId: comment._id })}>↑{comment.upVotes.length}</Button>
+                            <Button className="votebtn" onClick={() => handleVote({ type: "comment", vote: -1, postId: comment._id })}>↓{comment.downVotes.length}</Button>
                             <Button onClick={() => actions.DeleteAPost({ type: "comment", id: comment._id })}>Delete</Button>
                         </Card.Body>
                     </Card>
