@@ -109,11 +109,15 @@ function Kata(props) {
                     <Card className="cardbody" style={{ width: '60rem', height: '10rem' }}>
                         <Card.Body >
                             {/* <img src={post?.userID?.imageUrl} />  */}
+                            {/* await actions.vote({ type: "feedback", vote: -1, postId: kata._id })  */}
                             <Card.Title><Link to={`/feedback/${kata._id}`}><h3>{kata.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">By: <img src={kata?.userID?.imageUrl} width="30px" height="30px" /> {kata.username}</Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
                             <Button onClick={() => actions.vote({ type: "feedback", vote: 1, postId: kata._id })}>↑{kata.upVotes.length}</Button>
-                            <Button onClick={() => actions.vote({ type: "feedback", vote: -1, postId: kata._id })}>↓{kata.downVotes.length}</Button>
+                            <Button onClick={async () => {
+                                await actions.vote({ type: "feedback", vote: -1, postId: kata._id })
+                                getKata()
+                                }}>↓{kata.downVotes.length}</Button>
                             {kata.userID._id === user?._id ? <Button onClick={async () => {
                                 let res = await actions.DeleteAPost({ type: "feedback", id: kata._id })
                                 getKata()
