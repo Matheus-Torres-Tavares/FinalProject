@@ -26,13 +26,10 @@ const PostDetails = (props) => {
     }, [])
 
     const showEmail = (props) =>
-
-
         console.log(postDetails)
 
     return (
         <div>
-
             <Card className="detailcard" style={{ width: '35rem' }}>
                 <Card.Body>
                     <p>{user?.email}</p>
@@ -47,19 +44,7 @@ const PostDetails = (props) => {
                 </Card.Body>
             </Card>
             <Comments {...props} comments={comments} />
-
-            {/* <div>{comments?.map(comment => {
-                return (
-
-                    <p>{comment.text}</p>
-                )
-            })}</div> */}
         </div>
-
-
-
-
-
     );
 }
 

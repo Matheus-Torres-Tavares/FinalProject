@@ -10,6 +10,7 @@
 
 }
 
+
 .formcard{
     margin-top:100px!important;
 }
@@ -64,8 +65,13 @@ h3 {
 
 .cardbody {
     margin-top: 10px!important;
+    margin-bottom:20px!important;
 
   
+}
+
+.homecontainer{
+    height: 100vh !important;
 }
 
 
@@ -77,3 +83,40 @@ h3 {
     padding: 0px!important;
     margin-top:0px!important;
 }
+
+
+.votebtn{
+ padding: 5px !important
+}
+
+/* .footer{
+    width: 100%!important;
+    margin-left:0px!important;
+    border: none !important;
+    background: grey!important;
+    padding: 0px !important;
+    margin: 0px !important;
+} */
+
+
+
+.footer{
+    background: grey!important;
+  display: sticky;  
+  text-align: center;  
+  bottom: 0;  
+  right: 0;  
+  height: 1.5rem;  
+  width: 100%;
+  }
+
+
+  .footertext{
+      color: orange;
+  }
+
+  /* .footerwords{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly
+} */

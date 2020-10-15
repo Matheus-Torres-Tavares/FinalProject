@@ -8,10 +8,6 @@ import { Link } from 'react-router-dom'
 import Comments from './Comments'
 import "./css/app.css"
 
-
-
-
-
 function Kata(props) {
     useEffect(() => {
         getKata()
@@ -27,18 +23,12 @@ function Kata(props) {
     console.log(kataList)
 
 
-
-
     const getKata = async () => {
         let res = await actions.getPosts({ type: "feedback", options: { sort: {} } })
         console.log(res?.data)
         setKataList(res?.data.posts)
         console.log(res?.data.posts)
         console.log(kataList)
-
-
-
-
     }
 
     async function handleSubmit(e) {
@@ -51,41 +41,29 @@ function Kata(props) {
         getKata()
     }
 
-
-
-
-
-
-
+    async function handleVote(vote) {
+        console.log(vote)
+        let res = await actions.vote(vote)
+        console.log(res)
+        getKata()
+    }
 
     return (
 
         <div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            {/* Project seeking feedback: */}
-            {/* Technologies used: */}
-            {/* Description: */}
+
             {user && showSubmit ? (
-                <Fragment>
+                <Fragment >
                     <Card style={{ width: '34rem' }}>
                         <Form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label><b>Project seeking feedback:</b></label>
                                 <input className="form-control" onChange={(e) => setTitle(e.target.value)} type="text" name="title">
-
                                 </input>
                             </div>
                             <div className="form-group">
-
                                 <label><b>Technologies used:</b></label>
-
-
                                 <input className="form-control" onChange={(e) => setTechnologies(e.target.value)} type="text" name="title">
-
                                 </input>
                             </div>
                             <div className="form-group">
@@ -108,28 +86,20 @@ function Kata(props) {
                 return (
                     <Card className="cardbody" style={{ width: '60rem', height: '10rem' }}>
                         <Card.Body >
-                            {/* <img src={post?.userID?.imageUrl} />  */}
-                            {/* await actions.vote({ type: "feedback", vote: -1, postId: kata._id })  */}
                             <Card.Title><Link to={`/feedback/${kata._id}`}><h3>{kata.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">By: <img src={kata?.userID?.imageUrl} width="30px" height="30px" /> {kata.username}</Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
-                            <Button onClick={() => actions.vote({ type: "feedback", vote: 1, postId: kata._id })}>↑{kata.upVotes.length}</Button>
-                            <Button onClick={async () => {
-                                await actions.vote({ type: "feedback", vote: -1, postId: kata._id })
-                                getKata()
-                                }}>↓{kata.downVotes.length}</Button>
-                            {kata.userID._id === user?._id ? <Button onClick={async () => {
+                            <Button className="votebtn" onClick={() => handleVote({ type: "feedback", vote: 1, postId: kata._id })}>↑{kata.upVotes.length}</Button>
+                            <Button className="votebtn" onClick={() => handleVote({ type: "feedback", vote: -1, postId: kata._id })
+                            }>↓{kata.downVotes.length}</Button>
+                            {kata.userID._id === user?._id ? <Button className="votebtn" onClick={async () => {
                                 let res = await actions.DeleteAPost({ type: "feedback", id: kata._id })
                                 getKata()
-                                }}>Delete</Button> : <></>}
+                            }}>Delete</Button> : <></>}
                         </Card.Body>
                     </Card>
-
-
                 )
-
             })}
-
         </div>
     )
 }
