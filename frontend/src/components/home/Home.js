@@ -6,7 +6,7 @@ import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
 import { Switch, Route, NavLink, useHistory, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, Button, Card } from 'react-bootstrap'
+import { Container, Button, Card, Navbar, Nav, Form, FormControl } from 'react-bootstrap'
 
 
 
@@ -90,7 +90,7 @@ const Home = (props) => {
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
-          <NewPost {...props} getPosts={getPosts}/>
+          <NewPost {...props} getPosts={getPosts} />
           {postList?.map(post => {
             console.log(post)
             return (
@@ -101,9 +101,9 @@ const Home = (props) => {
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: <img src={post?.userID?.imageUrl} width="30px" height="30px" /> {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
-                    <Button onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
-                    <Button onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
-                    {post.userID._id === user?._id ? <Button onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button> : <></>}
+                    <Button className="votebtn" onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
+                    <Button className="votebtn" onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
+                    {post.userID._id === user?._id ? <Button className="votebtn" onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button> : <></>}
                   </Card.Body>
                   {/* <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
                     <button className="btn">^</button>
@@ -118,7 +118,15 @@ const Home = (props) => {
               </div>
             )
           })}
+          <div className="footer">
+            <div className="footerwords">
+              <h5 className="footertext">Copyright DevLink 2020 by</h5>
+              <h5 className="footertext">Matheus Tavares</h5>
+              <h5 className="footertext">Sebastian Grana</h5>
+              <h5 className="footertext">Anthony Gutilla</h5>
+            </div>
 
+          </div>
         </Fragment>
 
       ) : <p>Login to see posts</p>}

@@ -108,10 +108,12 @@ function Kata(props) {
                     <Card className="cardbody" style={{ width: '60rem', height: '10rem' }}>
                         <Card.Body >
                             {/* <img src={post?.userID?.imageUrl} />  */}
-                            <Card.Title><Link to={`/post/${kata._id}`}><h3>{kata.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
+                            <Card.Title><Link to={`/feedback/${kata._id}`}><h3>{kata.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">By: <img src={kata?.userID?.imageUrl} width="30px" height="30px" /> {kata.username}</Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
-                            {kata.userID._id === user?._id ? <Button onClick={() => actions.DeleteAPost({ type: "feedback", id: kata._id })}>Delete</Button> : <></>}
+                            {/* <Button className="votebtn" onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
+                    <Button className="votebtn" onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button> */}
+                            {kata.userID._id === user?._id ? <Button className="votebtn" onClick={() => actions.DeleteAPost({ type: "feedback", id: kata._id })}>Delete</Button> : <></>}
                         </Card.Body>
                     </Card>
 
