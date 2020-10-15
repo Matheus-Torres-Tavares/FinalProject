@@ -13,10 +13,23 @@ code {
 
 
 nav {
+  background: orange;
+  margin-left: 300px;
+}
+
+.navbrand {
+  margin: 0px;
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+
+
+
+.mr-auto {
+  color: black !important;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: black;
+  flex-direction: flex-end !important;
 }
 
 nav a {
@@ -33,12 +46,44 @@ nav a {
   margin-left: 80%;
   text-align: right !important;
   align-items: center;
-  border-right: 1px solid white;
-  background-color: grey
+
+
+}
+
+.testnav {
+
+  position: absolute !important;
+  top: 0;
+  margin-top: 30px !important;
+  right: 0;
+  padding: 10px;
+
+
 }
 
 .nav-link {
 
   width: 100%;
   text-align: right,
+}
+
+.mainnav {
+  width: 10%;
+}
+
+.forumhead {
+  margin-top: 0 px;
+  color: orange;
+  width: 100%;
+}
+
+
+.navright {
+  color: orange
+}
+
+.firstLink {
+  margin-left: 100px;
+  font-size: 100px;
+  background: red;
 }
