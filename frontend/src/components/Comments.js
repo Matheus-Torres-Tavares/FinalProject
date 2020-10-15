@@ -28,6 +28,12 @@ function Comments(props) {
 
     }
 
+    // const resetInput = async () => {
+    //     e.target.reset()
+
+
+    // }
+
 
 
 
@@ -38,7 +44,7 @@ function Comments(props) {
             <Form onSubmit={handleSubmit}>
                 <div>
                     <label> Leave your comment below:</label>
-                    <textarea className="form-control" onChange={(e) => setText(e.target.value)}>
+                    <textarea className="form-control" onChange={(e) => setText(e.target.value)} >
                     </textarea>
                 </div>
                 <div>

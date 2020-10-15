@@ -39,7 +39,8 @@ const postSchema = new Schema({
   userID: { type: Schema.Types.ObjectId, ref: "User" },
   date: { type: Date, default: Date.now },
   technologies: { type: String },
-  // votes: [{ user: Schema.Types.ObjectId, vote: Number }],
+  upVotes: { type: Array },
+  downVotes: { type: Array }
   // comments: [commentSchema],
 });
 
