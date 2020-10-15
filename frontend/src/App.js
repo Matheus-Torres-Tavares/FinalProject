@@ -20,7 +20,7 @@ import Comments from "./components/Comments";
 import Kata from "./components/Kata";
 import "../src/index.css"
 import Feedback from "./components/Feedback"
-import { Navbar, Nav, } from 'react-bootstrap'
+import { Navbar, Nav, Dropdown, DropdownButton, ButtonGroup, Card, ListGroup, NavDropdown } from 'react-bootstrap'
 import binary from './img/Dev_binary.png'
 import logo from './img/Dev_logo.png'
 
@@ -50,18 +50,88 @@ const App = () => {
   return (
 
     <TheContext.Provider value={{ history, user, setUser }}>
+      {user ? (
 
-      <Navbar bg="dark" variant="dark">
+        <Fragment>
+          <Navbar.Brand className="navbrand" href="/"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+
+
+
+
+        </Fragment>
+
+
+
+
+
+
+
+
+
+      ) : (
+          <Fragment>
+            <Navbar.Brand href="/"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+
+
+
+
+          </Fragment>
+
+
+
+
+
+
+        )}
+
+      {/* <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
         <Nav className="mr-auto">
+          <>
+
+          </>
 
           {user ? (
-            <Fragment>
-              <Nav.Link onClick={logOut} to="/"> Log Out</Nav.Link>
-              <Nav.Link to="/profile">Profile? </Nav.Link>
 
-            </Fragment>
+            <Fragment>
+              <nav className="testnav">
+
+                <a className="firstlink" href="">
+                  hey
+                  </a>
+                <a href="">
+                  dude
+                  </a>
+              </nav>
+              {/* <Navbar className="mainnav" collapseOnSelect expand="lg" bg="dark" variant="dark">
+
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav className="mr-auto">
+                    <Nav.Link href="#features">Features</Nav.Link>
+                    <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                      <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                      <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                      <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    </NavDropdown>
+                  </Nav>
+                  <Nav>
+
+
+                  </Nav>
+                </Navbar.Collapse>
+              </Navbar> */}
+
+
+      {/* <Nav.Link onClick={logOut} to="/"> Log Out</Nav.Link>
+              <Nav.Link to="/profile">Profile? </Nav.Link> */}
+
+      {/* {/* </Fragment>
           ) : (
+
               <Fragment>
                 <Nav.Link to="/sign-up">Sign Up</Nav.Link>
                 <Nav.Link to="/log-in">Log In</Nav.Link>
@@ -69,15 +139,27 @@ const App = () => {
               </Fragment>
 
             )}
-        </Nav>
+        </Nav> */}
 
-      </Navbar>
-      {user ? (<Nav className="peanuts" defaultActiveKey="/home" className="flex-column test-nav">
-        Sub-Forums
-        <Nav.Link href="/">Collaborations</Nav.Link>
-        <Nav.Link href="/kata">Katas</Nav.Link>
-        <Nav.Link href="/feedback">Feedback</Nav.Link>
-      </Nav>) : null}
+
+      {user ? (
+
+
+
+        <Nav className="peanuts" defaultActiveKey="/home" className="flex-column test-nav">
+
+          <Card style={{ width: '18rem' }}>
+            <Card.Header className="forumhead"> <h3>Sub-Forums</h3></Card.Header>
+            <ListGroup variant="flush">
+              <ListGroup.Item><h4>Collaborations</h4></ListGroup.Item>
+              <ListGroup.Item><h4>Kata</h4></ListGroup.Item>
+              <ListGroup.Item><h4>Feedback</h4></ListGroup.Item>
+            </ListGroup>
+          </Card>
+          <Nav.Link href="/">Collaborations</Nav.Link>
+          <Nav.Link href="/kata">Kata</Nav.Link>
+          <Nav.Link href="/feedback">Feedback</Nav.Link>
+        </Nav>) : null}
 
 
 
@@ -143,8 +225,8 @@ const App = () => {
 
         <Route component={NotFound} />
       </Switch>
-      { !user && <GoogleAuth setUser={setUser} />}
-      { !user && <GoogleAuthLogin setUser={setUser} />}
+      {!user && <GoogleAuth setUser={setUser} />}
+      {!user && <GoogleAuthLogin setUser={setUser} />}
 
       <NotificationContainer />
     </TheContext.Provider>

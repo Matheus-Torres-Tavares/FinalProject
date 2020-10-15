@@ -48,13 +48,21 @@ const Home = (props) => {
 
   // const addVotes = async () => {
 
-  //   let res = await actions.addVote({ votes })
-  //   setVotes(res?.data)
-  //   console.log(votes)
-  //   console.log(props)
+  //   setUpVotes(upVotes => upVotes + 1)
 
 
   // }
+
+  const addVotes = async () => {
+
+    let res = await actions.addVote({ votes })
+    setVotes(res?.data)
+    console.log(votes)
+    console.log(props)
+    console.log(res?.data)
+
+
+  }
 
   // function addVotes() {
   //   setUpVotes(upVotes => upVotes + 1)
@@ -108,7 +116,7 @@ const Home = (props) => {
                     </Card.Text>
                     <Button variant="primary">See Post</Button>
 
-                    {/* <Button onClick={addVotes}>Upvotes:</Button> */}
+                    <Button onClick={addVotes}>Upvotes:{upVotes}</Button>
                     <Button onClick={decreaseVotes}>downVotes:{downVotes}</Button>
                     {/* <Button onClick={decreaseVotes}>Upvotes:</Button> */}
                   </Card.Body>
