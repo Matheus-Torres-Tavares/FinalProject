@@ -59,8 +59,10 @@ router.post('/vote', verifyToken, (req, res, next) => {
       console.log(authData)
       res.status(403).json(err);
     } else {
+      let post = req.body
+      console.log(post)
       if (req.body.vote == 1) {
-        let result = await Posts.updateOne({ _id: req.body.postId }, {
+        let result = await models[post.type].updateOne({ _id: req.body.postId }, {
           $addToSet: {
             upVotes: authData.user._id
           }
@@ -68,14 +70,14 @@ router.post('/vote', verifyToken, (req, res, next) => {
 
         if (result.nModified === 0) {
           //0 means, no modifikation, that means its already liked
-          await Posts.updateOne({ _id: req.body.postId }, {
+          await models[post.type].updateOne({ _id: req.body.postId }, {
             $pull: {
               upVotes: authData.user._id
             }
           })
         }
       } else {
-        let result = await Posts.updateOne({ _id: req.body.postId }, {
+        let result = await models[post.type].updateOne({ _id: req.body.postId }, {
           $addToSet: {
             downVotes: authData.user._id
           }
@@ -83,7 +85,7 @@ router.post('/vote', verifyToken, (req, res, next) => {
 
         if (result.nModified === 0) {
           //0 means, no modifikation, that means its already liked
-          await Posts.updateOne({ _id: req.body.postId }, {
+          await models[post.type].updateOne({ _id: req.body.postId }, {
             $pull: {
               downVotes: authData.user._id
             }
