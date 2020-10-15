@@ -33,11 +33,11 @@ const PostDetails = (props) => {
             <Card className="detailcard" style={{ width: '35rem' }}>
                 <Card.Body>
                     <p>{user?.email}</p>
-                    <Card.Title>{postDetails.title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">By: {postDetails.username}</Card.Subtitle>
-                    <Card.Subtitle className="mb-2 text-muted">Posted on :{postDetails.date} </Card.Subtitle>
+                    <Card.Title>{postDetails?.title}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">By: {postDetails?.username}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">Posted on :{postDetails?.date} </Card.Subtitle>
                     <Card.Text>
-                        {postDetails.text}
+                        {postDetails?.text}
                     </Card.Text>
                     <Card.Link href={`mailto:${user?.email}`}>Github link </Card.Link>
                     <Card.Link href="#"> Contact Me</Card.Link>
