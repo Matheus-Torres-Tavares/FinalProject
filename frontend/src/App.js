@@ -54,7 +54,7 @@ const App = () => {
         {user ? (
 
           <Fragment>
-            <Navbar.Brand className="navbrand" href="/"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+            <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
             {/* <nav className="testnav">
             <a className="firstlink" href="">hey</a>
             <a href="">dude</a>
@@ -62,7 +62,7 @@ const App = () => {
             <Navbar className="testnav" bg="dark" variant="dark">
 
               <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/all">Home</Nav.Link>
                 <Nav.Link href="/profile">Profile</Nav.Link>
                 <Nav.Link onClick={logOut} to="/">Logout</Nav.Link>
               </Nav>
