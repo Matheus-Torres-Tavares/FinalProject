@@ -92,7 +92,7 @@ function Kata(props) {
 
                         </Form>
                     </Card>
-                    <Comments />
+
 
                 </Fragment>
 
