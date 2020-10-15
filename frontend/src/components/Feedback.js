@@ -26,19 +26,12 @@ function Kata(props) {
     const [showSubmit, setShowSubmit] = useState(false)
     console.log(kataList)
 
-
-
-
     const getKata = async () => {
         let res = await actions.getPosts({ type: "feedback" })
         console.log(res?.data)
         setKataList(res?.data.posts)
         console.log(res?.data.posts)
         console.log(kataList)
-
-
-
-
     }
 
     async function handleSubmit(e) {
@@ -51,24 +44,10 @@ function Kata(props) {
         getKata()
     }
 
-
-
-
-
-
-
-
     return (
 
         <div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            {/* Project seeking feedback: */}
-            {/* Technologies used: */}
-            {/* Description: */}
+
             {user && showSubmit ? (
                 <Fragment>
                     <Card style={{ width: '34rem' }}>
@@ -117,11 +96,11 @@ function Kata(props) {
                             <Button onClick={async () => {
                                 await actions.vote({ type: "feedback", vote: -1, postId: kata._id })
                                 getKata()
-                                }}>↓{kata.downVotes.length}</Button>
+                            }}>↓{kata.downVotes.length}</Button>
                             {kata.userID._id === user?._id ? <Button onClick={async () => {
                                 let res = await actions.DeleteAPost({ type: "feedback", id: kata._id })
                                 getKata()
-                                }}>Delete</Button> : <></>}
+                            }}>Delete</Button> : <></>}
                         </Card.Body>
                     </Card>
 

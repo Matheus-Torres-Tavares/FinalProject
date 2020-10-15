@@ -25,18 +25,12 @@ function Kata(props) {
     const [showSubmit, setShowSubmit] = useState(false)
     console.log(kataList)
 
-
-
-
     const getKata = async () => {
         let res = await actions.getPosts({ type: "kata" })
         console.log(res?.data)
         setKataList(res?.data.posts)
         console.log(res?.data.posts)
         console.log(kataList)
-
-
-
 
     }
 
@@ -49,22 +43,9 @@ function Kata(props) {
         setShowSubmit(false)
         getKata()
     }
-
-
-
-
-
-
-
-
     return (
 
         <div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
             {user && showSubmit ? (
                 <Fragment>
                     <Card style={{ width: '34rem' }}>
@@ -113,7 +94,7 @@ function Kata(props) {
                             {kata.userID._id === user?._id ? <Button onClick={async () => {
                                 let res = await actions.DeleteAPost({ type: "kata", id: kata._id })
                                 getKata()
-                                }}>Delete</Button> : <></>}
+                            }}>Delete</Button> : <></>}
                         </Card.Body>
 
                     </Card>
