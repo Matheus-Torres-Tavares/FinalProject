@@ -54,19 +54,41 @@ router.post("/DeleteAPost", verifyToken, (req, res) => {
 });
 router.post('/vote', verifyToken, (req, res, next) => {
   console.log('testing if this shit works')
-  jwt.verify(req.token, "secretkey", (err, authData) => {
+  jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
       console.log(authData)
       res.status(403).json(err);
     } else {
       if (req.body.vote == 1) {
-        Posts.findByIdAndUpdate(req.body.postId, { $addToSet: { upVotes: authData.user._id } }).then((AddingUpVote) => {
-          res.json({ AddingUpVote });
-        });
+        let result = await Posts.updateOne({ _id: req.body.postId }, {
+          $addToSet: {
+            upVotes: authData.user._id
+          }
+        })
+
+        if (result.nModified === 0) {
+          //0 means, no modifikation, that means its already liked
+          await Posts.updateOne({ _id: req.body.postId }, {
+            $pull: {
+              upVotes: authData.user._id
+            }
+          })
+        }
       } else {
-        Posts.findByIdAndUpdate(req.body.postId, { $addToSet: { downVotes: authData.user._id } }).then((AddingUpVote) => {
-          res.json({ AddingUpVote });
-        });
+        let result = await Posts.updateOne({ _id: req.body.postId }, {
+          $addToSet: {
+            downVotes: authData.user._id
+          }
+        })
+
+        if (result.nModified === 0) {
+          //0 means, no modifikation, that means its already liked
+          await Posts.updateOne({ _id: req.body.postId }, {
+            $pull: {
+              downVotes: authData.user._id
+            }
+          })
+        }
       }
     }
   })
