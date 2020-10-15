@@ -91,7 +91,7 @@ const Home = (props) => {
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
-          {showSubmit ? <NewPost {...props} getPosts={getPosts}/> : <button className="btn btn-primary">Show Submit Form</button>}
+          {showSubmit ? <NewPost {...props} getPosts={getPosts} /> : <button className="btn btn-primary">Show Submit Form</button>}
           {postList?.map(post => {
             console.log(post)
             return (
@@ -102,8 +102,8 @@ const Home = (props) => {
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: <img src={post?.userID?.imageUrl} width="30px" height="30px" /> {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
-                    <Button onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
-                    <Button onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
+                    <Button onClick={() => actions.vote({ type: "post", vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
+                    <Button onClick={() => actions.vote({ type: "post", vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
                     {post.userID._id === user?._id ? <Button onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button> : <></>}
                   </Card.Body>
                   {/* <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>
