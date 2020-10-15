@@ -26,13 +26,10 @@ const PostDetails = (props) => {
     }, [])
 
     const showEmail = (props) =>
-
-
         console.log(postDetails)
 
     return (
         <div>
-
             <Card className="detailcard" style={{ width: '35rem' }}>
                 <Card.Body>
                     <p>{user?.email}</p>
