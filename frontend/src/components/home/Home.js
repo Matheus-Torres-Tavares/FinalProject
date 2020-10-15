@@ -65,6 +65,12 @@ const Home = (props) => {
     setDownVotes(downVotes => downVotes - 1)
   }
 
+  async function handleVote(vote) {
+    console.log(vote)
+    let res = await actions.vote(vote)
+    console.log(res)
+    getPosts()
+  }
 
 
   return (
@@ -83,8 +89,8 @@ const Home = (props) => {
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: <img src={post?.userID?.imageUrl} width="30px" height="30px" /> {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
-                    <Button className="votebtn" onClick={() => actions.vote({ type: "post", vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
-                    <Button className="votebtn" onClick={() => actions.vote({ type: "post", vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
+                    <Button className="votebtn" onClick={() => handleVote({ type: "post", vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
+                    <Button className="votebtn" onClick={() => handleVote({ type: "post", vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
                     {post.userID._id === user?._id ? <Button className="votebtn" onClick={async () => {
                       let res = await actions.DeleteAPost({ type: "post", id: post._id })
                       getPosts()
