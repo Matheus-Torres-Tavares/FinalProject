@@ -77,3 +77,40 @@ h3 {
     padding: 0px!important;
     margin-top:0px!important;
 }
+
+
+.votebtn{
+ padding: 5px !important
+}
+
+.footer{
+    width: 100%!important;
+    margin-left:0px!important;
+    border: none !important;
+    background: grey!important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+
+
+.footer{
+    margin-top: 3rem;
+    padding: 20px;
+    background-color: rgb(235, 195, 64);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+
+  .footertext{
+      color: orange;
+  }
+
+  .footerwords{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly
+}
