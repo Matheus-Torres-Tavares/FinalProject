@@ -100,8 +100,9 @@ const Home = (props) => {
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: <img src={post?.userID?.imageUrl} width="30px" height="30px" /> {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
-                    <Button onClick={() => actions.vote({ vote: 1, postId: post._id })}>UpVote</Button>
-                    <Button onClick={() => actions.vote({ vote: -1, postId: post._id })}>DownVote</Button>
+                    <Button onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
+                    <Button onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
+                    <Button onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button>
                   </Card.Body>
                 </Card>
                 <br></br>
