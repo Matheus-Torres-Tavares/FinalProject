@@ -26,7 +26,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "https://clientnetlify.netlify.app"] //Swap this with the client url
+    origin: ["https://devlink-cool.herokuapp.com", "http://localhost:3000", "https://dev-link.netlify.app"] //Swap this with the client url
   })
 );
 
@@ -58,7 +58,7 @@ app.use('/api', auth);
 app.get('*', (req, res, next) => {
   console.log('weird', req.headers.host, 'peach', req.url)
 
-  if(req.headers.host.includes('heroku')){
+  if (req.headers.host.includes('heroku')) {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
   } else {
     next()
