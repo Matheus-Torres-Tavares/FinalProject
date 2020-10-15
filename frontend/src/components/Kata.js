@@ -22,6 +22,7 @@ function Kata(props) {
     const [text, setText] = useState()
     const [technologies, setTechnologies] = useState()
     const [kataList, setKataList] = useState()
+    const [showSubmit, setShowSubmit] = useState(false)
     console.log(kataList)
 
 
@@ -45,6 +46,8 @@ function Kata(props) {
         console.log(title, text)
         let res = await actions.addKata({ title, text, technologies, userID: props.thePropUser?.googleId, username: props.thePropUser?.name })
         console.log(res?.data)
+        setShowSubmit(false)
+        getKata()
     }
 
 
@@ -62,7 +65,7 @@ function Kata(props) {
             <br></br>
             <br></br>
             <br></br>
-            {user ? (
+                {user && showSubmit ? (
                 <Fragment>
                     <Card style={{ width: '34rem' }}>
                         <Form onSubmit={handleSubmit}>
@@ -89,19 +92,13 @@ function Kata(props) {
                                 </textarea>
                             </div>
                             <Button variant="primary" type="submit">Submit</Button>
+                            <Button variant="primary" onClick={() => setShowSubmit(false)}>Cancel</Button>
 
                         </Form>
                     </Card>
-                    <Comments />
 
-                </Fragment>
-
-            ) : (
-                    <Fragment>
-                        <p></p>
-
-                    </Fragment>
-                )}
+                </Fragment>)
+                : <button onClick={() => setShowSubmit(true)} className="btn btn-primary" style={{ marginTop: '2rem' }}>Show Submit Form</button>}
             {kataList?.map(kata => {
                 console.log(kata)
                 return (

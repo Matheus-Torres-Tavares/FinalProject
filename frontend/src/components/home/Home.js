@@ -91,7 +91,7 @@ const Home = (props) => {
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
-          {showSubmit ? <NewPost {...props} getPosts={getPosts}/> : <button className="btn btn-primary">Show Submit Form</button>}
+          {showSubmit ? <NewPost {...props} getPosts={getPosts} setShowSubmit={setShowSubmit}/> : <button onClick={() => setShowSubmit(!showSubmit)} className="btn btn-primary" style={{ marginTop: '2rem' }}>Show Submit Form</button>}
           {postList?.map(post => {
             console.log(post)
             return (
