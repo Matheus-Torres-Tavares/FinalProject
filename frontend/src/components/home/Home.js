@@ -17,6 +17,7 @@ const Home = (props) => {
   console.log(user?._id)
   const [post, setPost] = useState({})
   const [postList, setPostList] = useState()
+  const [showSubmit, setShowSubmit] = useState(false)
   const [upVotes, setUpVotes] = useState(0)
   const [downVotes, setDownVotes] = useState(0)
   const [votes, setVotes] = useState(0)
@@ -90,7 +91,7 @@ const Home = (props) => {
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
-          <NewPost {...props} getPosts={getPosts} />
+          {showSubmit ? <NewPost {...props} getPosts={getPosts} setShowSubmit={setShowSubmit} /> : <button onClick={() => setShowSubmit(!showSubmit)} className="btn btn-primary" style={{ marginTop: '2rem' }}>Show Submit Form</button>}
           {postList?.map(post => {
             console.log(post)
             return (
@@ -101,8 +102,8 @@ const Home = (props) => {
                     <Card.Title><Link to={`/post/${post._id}`}><h3>{post.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: <img src={post?.userID?.imageUrl} width="30px" height="30px" /> {post.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(post.date).format("MMM Do YY")} </Card.Subtitle>
-                    <Button className="votebtn" onClick={() => actions.vote({ vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
-                    <Button className="votebtn" onClick={() => actions.vote({ vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
+                    <Button className="votebtn" onClick={() => actions.vote({ type: "post", vote: 1, postId: post._id })}>↑{post.upVotes.length}</Button>
+                    <Button className="votebtn" onClick={() => actions.vote({ type: "post", vote: -1, postId: post._id })}>↓{post.downVotes.length}</Button>
                     {post.userID._id === user?._id ? <Button className="votebtn" onClick={() => actions.DeleteAPost({ type: "post", id: post._id })}>Delete</Button> : <></>}
                   </Card.Body>
                   {/* <div style={{ display: 'flex', flexDirection: 'column', justifyContent:'flex-end', padding: '1.25rem' }}>

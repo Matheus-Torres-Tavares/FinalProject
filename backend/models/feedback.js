@@ -8,7 +8,9 @@ const feedbackSchema = new Schema({
     text: { type: String, required: true },
     userID: { type: Schema.Types.ObjectId, ref: "User" },
     date: { type: Date, default: Date.now },
-    technologies: { type: String }
+    technologies: { type: String },
+    upVotes: { type: Array },
+    downVotes: { type: Array }
     // comments: [commentSchema],
 });
 

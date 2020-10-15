@@ -6,7 +6,9 @@ const commentSchema = new Schema({
   text: { type: String, required: true },
   userID: { type: Schema.Types.ObjectId, ref: "User" },
   postID: { type: Schema.Types.ObjectId, ref: "Post" },
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  upVotes: { type: Array },
+  downVotes: { type: Array }
   // comments: [commentSchema],
 });
 
