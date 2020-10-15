@@ -9,7 +9,8 @@ const kataSchema = new Schema({
     date: { type: Date, default: Date.now },
     technologies: { type: String },
     upVotes: { type: Array },
-    downVotes: { type: Array }
+    downVotes: { type: Array },
+    kind: { type: String, default: "kata" }
     // comments: [commentSchema],
 });
 
