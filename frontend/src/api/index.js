@@ -98,6 +98,9 @@ const actions = {
   vote: async (data) => {
     return await API.post("/vote", data, resetHead());
   },
+  getAll: async () => {
+    return await API.get("/all", resetHead());
+  },
 
 
 
