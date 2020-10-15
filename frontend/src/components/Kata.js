@@ -66,7 +66,9 @@ function Kata(props) {
             <br></br>
             <br></br>
             {user && showSubmit ? (
-                <Fragment>
+
+                <Fragment >
+
                     <Card style={{ width: '34rem' }}>
                         <Form onSubmit={handleSubmit}>
                             <div className="form-group">
@@ -110,10 +112,14 @@ function Kata(props) {
                             <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
                             <Button className="votebtn" onClick={() => actions.vote({ type: "kata", vote: 1, postId: kata._id })}>↑{kata.upVotes.length}</Button>
                             <Button className="votebtn" onClick={() => actions.vote({ type: "kata", vote: -1, postId: kata._id })}>↓{kata.downVotes.length}</Button>
-                            {kata.userID._id === user?._id ? <Button onClick={() => actions.DeleteAPost({ type: "kata", id: kata._id })}>Delete</Button> : <></>}
+                            {kata.userID._id === user?._id ? <Button className="votebtn" onClick={async () => {
+                                let res = await actions.DeleteAPost({ type: "kata", id: kata._id })
+                                getKata()
+                            }}>Delete</Button> : <></>}
                         </Card.Body>
 
                     </Card>
+
 
 
                 )
@@ -121,7 +127,9 @@ function Kata(props) {
             })}
 
         </div>
+
     )
+
 }
 
 export default Kata
