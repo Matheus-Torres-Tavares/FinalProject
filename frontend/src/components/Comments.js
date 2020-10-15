@@ -64,6 +64,8 @@ function Comments(props) {
                             <Card.Text>
                                 {comment.text}
                             </Card.Text>
+                            <Button onClick={() => actions.vote({ type: "comment", vote: 1, postId: comment._id })}>↑{comment.upVotes.length}</Button>
+                            <Button onClick={() => actions.vote({ type: "comment", vote: -1, postId: comment._id })}>↓{comment.downVotes.length}</Button>
                             <Button onClick={() => actions.DeleteAPost({ type: "comment", id: comment._id })}>Delete</Button>
                         </Card.Body>
                     </Card>
