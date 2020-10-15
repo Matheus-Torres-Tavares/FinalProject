@@ -30,7 +30,7 @@ function Kata(props) {
 
 
     const getKata = async () => {
-        let res = await actions.getPosts({ type: "feedback" })
+        let res = await actions.getPosts({ type: "feedback", options: { sort: {} } })
         console.log(res?.data)
         setKataList(res?.data.posts)
         console.log(res?.data.posts)
