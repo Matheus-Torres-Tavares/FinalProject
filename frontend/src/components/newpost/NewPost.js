@@ -26,6 +26,7 @@ function NewPost(props) {
 
 
         if (props.getPosts) props.getPosts()
+        if (props.setShowSubmit) props.setShowSubmit(false)
 
 
     }
@@ -60,6 +61,7 @@ function NewPost(props) {
                 </div>
 
                 <Button variant="primary" type="submit">Submit</Button>
+                <Button variant="primary" onClick={() => props.setShowSubmit(false)}>Cancel</Button>
             </Form>
         </Card>
 

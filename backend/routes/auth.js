@@ -59,7 +59,8 @@ router.post('/vote', verifyToken, (req, res, next) => {
       console.log(authData)
       res.status(403).json(err);
     } else {
-      let post = req.body.id
+      let post = req.body
+      console.log(post)
       if (req.body.vote == 1) {
         let result = await models[post.type].updateOne({ _id: req.body.postId }, {
           $addToSet: {
