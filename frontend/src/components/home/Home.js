@@ -17,6 +17,7 @@ const Home = (props) => {
   console.log(user?._id)
   const [post, setPost] = useState({})
   const [postList, setPostList] = useState()
+  const [showSubmit, setShowSubmit] = useState(false)
   const [upVotes, setUpVotes] = useState(0)
   const [downVotes, setDownVotes] = useState(0)
   const [votes, setVotes] = useState(0)
@@ -90,7 +91,7 @@ const Home = (props) => {
 
           {/* <Button onClick={getPosts}>Get Posts</Button> */}
 
-          <NewPost {...props} getPosts={getPosts}/>
+          {showSubmit ? <NewPost {...props} getPosts={getPosts}/> : <button className="btn btn-primary">Show Submit Form</button>}
           {postList?.map(post => {
             console.log(post)
             return (
