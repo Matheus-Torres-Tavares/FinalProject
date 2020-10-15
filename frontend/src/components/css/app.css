@@ -10,6 +10,14 @@
 
 }
 
+body{
+    height: 100% !important;
+}
+
+
+#root{
+    min-height:100%;
+}
 
 .formcard{
     margin-top:100px!important;
@@ -75,6 +83,10 @@ h3 {
 }
 
 
+.sortbtn{
+    padding:25px!important;
+}
+
 .detailcard{
    margin-top:50px!important;
 }
@@ -108,6 +120,7 @@ h3 {
   right: 0;  
   height: 1.5rem;  
   width: 100%;
+ 
   }
 
 

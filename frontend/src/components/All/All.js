@@ -34,7 +34,7 @@ function All() {
 
     }
     return (
-        <Container className="homecontainer" fluid>
+        <Container className="sortbtn" fluid>
             <Button onClick={sortByDate}>Date</Button>
             <Button onClick={sortByName}>Alphabetical</Button>
             <Button onClick={sortByUpVote}>upVote</Button>
@@ -69,6 +69,8 @@ function All() {
 
 
         </Container>
+
+
     )
 
 }

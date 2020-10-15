@@ -98,8 +98,10 @@ function Kata(props) {
                             }}>Delete</Button> : <></>}
                         </Card.Body>
                     </Card>
+
                 )
             })}
+
         </div>
     )
 }
