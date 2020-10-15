@@ -47,19 +47,7 @@ const PostDetails = (props) => {
                 </Card.Body>
             </Card>
             <Comments {...props} comments={comments} />
-
-            {/* <div>{comments?.map(comment => {
-                return (
-
-                    <p>{comment.text}</p>
-                )
-            })}</div> */}
         </div>
-
-
-
-
-
     );
 }
 
