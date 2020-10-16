@@ -67,7 +67,7 @@ h3 {
 
 
 .form-group{
-    margin-top:0px;
+    margin-top:10px;
 }
 
 
@@ -109,27 +109,52 @@ h3 {
     padding: 0px !important;
     margin: 0px !important;
 } */
+.hometext{
+    margin-top:100px!important;
+    display:flex !important;
+    flex-direction: column !important;
+    justify-content:center !important;
+    align-items:center!important;
+    background:rgba(51, 83, 172, 0.952);
+}
+.feedbackhead{
+    margin-top: 30px !important;
+}
+
+.collabhead{
+    margin-top:30px!important;
+}
 
 
-
-.footer{
+ /* .footer{
     background: grey!important;
-  display: sticky;  
+  
   text-align: center;  
+  padding-bottom: 40px!important;
   bottom: 0;  
   right: 0;  
-  height: 1.5rem;  
+  height: 1.5rem; 
+  padding-top: 20px!important;
+   margin:0;
   width: 100%;
  
-  }
+  }   */
 
 
   .footertext{
       color: orange;
-  }
+  } 
 
   /* .footerwords{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly
 } */
+
+
+.googlebtn{
+    position: relative;
+    top: 0;
+    border: 3px solid #73AD21;
+    
+}

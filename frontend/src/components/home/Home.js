@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
 import moment from 'moment'
 import actions from '../../api/index'
+import logo from '/Users/secondary/Desktop/ironhack/finalmern/frontend/src/img/Dev_logo.png'
 import "../css/app.css"
 import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
@@ -78,11 +79,14 @@ const Home = (props) => {
 
       {user ? (
         <Fragment>
+          <h3 className="collabhead">Collaborate with others on your projects</h3>
+          <p>Submit a project you would like collaboration efforts on, and see who is interesed in teaming up!</p>
           {showSubmit ? <NewPost {...props} getPosts={getPosts} setShowSubmit={setShowSubmit} /> : <button onClick={() => setShowSubmit(!showSubmit)} className="btn btn-primary" style={{ marginTop: '2rem' }}>Show Submit Form</button>}
           {postList?.map(post => {
             console.log(post)
             return (
               <div className="homecards">
+
                 <Card className="cardbody" style={{ width: '60rem', height: '10rem' }}>
                   <Card.Body >
                     {/* <img src={post?.userID?.imageUrl} />  */}
@@ -105,11 +109,23 @@ const Home = (props) => {
 
         </Fragment>
 
-      ) : <p>Login to see posts</p>}
+      ) :
+        <Fragment>
+          <p>Login to see posts</p>
+          <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+
+          <div className="hometext">
+            <h1>Welcome to Devlink</h1>
+            <h3>Where coders can come together</h3>
+          </div>
+        </Fragment>
+      }
 
 
 
-
+      <footer className="footer">
+        <p className="footertext">&copy;Copyright DevLink 2020 by <span>Matheus Tavares</span> <span>Sebastian Grana</span> <span>Anthony Gutilla</span><span>Matthew Angel</span></p>
+      </footer>
     </Container>
   )
 }

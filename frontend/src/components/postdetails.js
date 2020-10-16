@@ -36,11 +36,12 @@ const PostDetails = (props) => {
                     <Card.Title>{postDetails?.title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">By: {postDetails?.username}</Card.Subtitle>
                     <Card.Subtitle className="mb-2 text-muted">Posted on :{postDetails?.date} </Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">{postDetails?.technologies} </Card.Subtitle>
                     <Card.Text>
                         {postDetails?.text}
                     </Card.Text>
                     <Card.Link href={`mailto:${user?.email}`}>Github link </Card.Link>
-                    <Card.Link href="#"> Contact Me</Card.Link>
+                    <a href={`mailto:${user?.email}`}> Contact Me</a>
                 </Card.Body>
             </Card>
             <Comments {...props} comments={comments} />
