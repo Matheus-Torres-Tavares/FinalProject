@@ -69,11 +69,8 @@ function Kata(props) {
         <div>
             <h3 className="feedbackhead">Coding Challenge Solutions</h3>
             <p>Find detailed solutions to the coding challenges employers will ask you to solve</p>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+
+
             {user && showSubmit ? (
 
                 <Fragment >
