@@ -52,10 +52,10 @@ const App = () => {
     <Fragment>
       <div className="appcontainer">
         <TheContext.Provider value={{ history, user, setUser }}>
+          <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
           {user ? (
 
             <Fragment>
-              <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
               {/* <nav className="testnav">
             <a className="firstlink" href="">hey</a>
             <a href="">dude</a>
@@ -73,7 +73,9 @@ const App = () => {
 
             </Fragment>
           ) : (
-              <p></p>
+              <Fragment>
+                
+              </Fragment>
             )}
           {user ? (
             <Nav className="peanuts" defaultActiveKey="/home" className="flex-column test-nav">

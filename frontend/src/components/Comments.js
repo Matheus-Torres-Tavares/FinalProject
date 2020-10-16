@@ -60,7 +60,10 @@ function Comments(props) {
                             </Card.Text>
                             <Button className="votebtn" onClick={() => handleVote({ type: "comment", vote: 1, postId: comment._id })}>↑{comment.upVotes.length}</Button>
                             <Button className="votebtn" onClick={() => handleVote({ type: "comment", vote: -1, postId: comment._id })}>↓{comment.downVotes.length}</Button>
-                            <Button onClick={() => actions.DeleteAPost({ type: "comment", id: comment._id })}>Delete</Button>
+                            { props.thePropUser?._id == comment.userID ? <Button onClick={() => {
+                                actions.DeleteAPost({ type: "comment", id: comment._id })
+                                props.history.go(0)
+                                }}>Delete</Button> : <></> }
                         </Card.Body>
                     </Card>
 
