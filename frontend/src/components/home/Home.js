@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
 import moment from 'moment'
 import actions from '../../api/index'
-import logo from '/Users/secondary/Desktop/ironhack/finalmern/frontend/src/img/Dev_logo.png'
+// import logo from '/img/Dev_logo.png'
 import "../css/app.css"
 import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
@@ -111,8 +111,8 @@ const Home = (props) => {
 
       ) :
         <Fragment>
-          <p>Login to see posts</p>
-          <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+
+          <Navbar.Brand className="navbrand" href="/all"></Navbar.Brand>
 
           <div className="hometext">
             <h1>Welcome to Devlink</h1>
@@ -121,11 +121,6 @@ const Home = (props) => {
         </Fragment>
       }
 
-
-
-      <footer className="footer">
-        <p className="footertext">&copy;Copyright DevLink 2020 by <span>Matheus Tavares</span> <span>Sebastian Grana</span> <span>Anthony Gutilla</span><span>Matthew Angel</span></p>
-      </footer>
     </Container>
   )
 }

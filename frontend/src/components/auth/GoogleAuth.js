@@ -1,7 +1,7 @@
 import React from "react";
 import actions from "../../api/index";
 import { GoogleLogin } from "react-google-login";
-import "/Users/secondary/Desktop/ironhack/finalmern/frontend/src/components/css/app.css"
+import "../css/app.css"
 
 const responseGoogle = (props) => {
   const onResponse = (response) => {
