@@ -92,3 +92,30 @@ nav a {
   font-size: 100px;
   background: red;
 }
+
+
+/* .footertext{
+  color: orange;
+  display: flex;
+  justify-content:space-between;
+  
+ 
+ 
+}
+
+.footer{
+  margin: 0;
+  height: 30px;
+} */
+
+
+.footer{
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:gray;
+  color: white;
+  text-align: center;
+  height: 50px;
+}

@@ -35,6 +35,9 @@ function All() {
     }
     return (
         <Container className="sortbtn" fluid>
+            <h3>The Front Page of DevLink</h3>
+            <p>Sort Posts by Category</p>
+
             <Button onClick={sortByDate}>Date</Button>
             <Button onClick={sortByName}>Alphabetical</Button>
             <Button onClick={sortByUpVote}>upVote</Button>
@@ -72,6 +75,7 @@ function All() {
 
 
     )
+
 
 }
 

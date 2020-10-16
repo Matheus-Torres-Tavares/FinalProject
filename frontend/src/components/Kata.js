@@ -6,7 +6,7 @@ import TheContext from '../TheContext'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import Comments from './Comments'
-
+import "./css/app.css"
 
 
 
@@ -67,6 +67,8 @@ function Kata(props) {
     return (
 
         <div>
+            <h3 className="feedbackhead">Coding Challenge Solutions</h3>
+            <p>Find detailed solutions to the coding challenges employers will ask you to solve</p>
             <br></br>
             <br></br>
             <br></br>
@@ -140,7 +142,9 @@ function Kata(props) {
         </div>
 
 
+
     )
+
 
 
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import actions from "../../api/index";
 import { GoogleLogin } from "react-google-login";
+import "/Users/secondary/Desktop/ironhack/finalmern/frontend/src/components/css/app.css"
 
 const responseGoogle = (props) => {
   const onResponse = (response) => {
@@ -14,10 +15,11 @@ const responseGoogle = (props) => {
       .then((user) => {
         props.setUser({ ...user?.data });
       })
-      .catch( response => console.error(response));
+      .catch(response => console.error(response));
   };
   return (
     <GoogleLogin
+      className="googlebtn"
       clientId={process.env.REACT_APP_GOOGLEID}
       buttonText="Signup"
       onSuccess={onResponse}

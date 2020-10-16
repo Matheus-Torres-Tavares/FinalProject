@@ -51,7 +51,8 @@ function Kata(props) {
     return (
 
         <div>
-
+            <h3 className="feedbackhead">Hear Feedback From Others</h3>
+            <p>Submit for your projects for constructive criticism from fellow individuals in the tech community</p>
             {user && showSubmit ? (
                 <Fragment >
                     <Card style={{ width: '34rem' }}>
@@ -89,6 +90,7 @@ function Kata(props) {
                             <Card.Title><Link to={`/feedback/${kata._id}`}><h3>{kata.title.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })}</h3></Link></Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">By: <img src={kata?.userID?.imageUrl} width="30px" height="30px" /> {kata.username}</Card.Subtitle>
                             <Card.Subtitle className="mb-2 text-muted">Posted on: {moment(kata.date).format("MMM Do YY")} </Card.Subtitle>
+
                             <Button className="votebtn" onClick={() => handleVote({ type: "feedback", vote: 1, postId: kata._id })}>↑{kata.upVotes.length}</Button>
                             <Button className="votebtn" onClick={() => handleVote({ type: "feedback", vote: -1, postId: kata._id })
                             }>↓{kata.downVotes.length}</Button>
