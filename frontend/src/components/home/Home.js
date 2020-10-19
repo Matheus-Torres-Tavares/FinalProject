@@ -111,21 +111,20 @@ const Home = (props) => {
 
       ) :
         <Fragment>
-          <p>Login to see posts</p>
-          <Navbar.Brand className="navbrand" href="/all"><img src={logo} width="160" height="60" alt='error' /></Navbar.Brand>
+
 
           <div className="hometext">
             <h1>Welcome to Devlink</h1>
             <h3>Where coders can come together</h3>
           </div>
+          {!user && <GoogleAuth setUser={setUser} />}
+          {!user && <GoogleAuthLogin setUser={setUser} />}
         </Fragment>
       }
 
 
 
-      <footer className="footer">
-        <p className="footertext">&copy;Copyright DevLink 2020 by <span>Matheus Tavares</span> <span>Sebastian Grana</span> <span>Anthony Gutilla</span><span>Matthew Angel</span></p>
-      </footer>
+
     </Container>
   )
 }

@@ -74,7 +74,7 @@ const App = () => {
             </Fragment>
           ) : (
               <Fragment>
-                
+
               </Fragment>
             )}
           {user ? (
