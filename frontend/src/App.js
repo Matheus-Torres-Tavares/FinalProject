@@ -90,7 +90,13 @@ const App = () => {
               </Card>
 
             </Nav>) : null}
-
+          <br></br>
+          <br></br>
+          <br></br>
+          <div>
+            {!user && <GoogleAuth setUser={setUser} />}
+            {!user && <GoogleAuthLogin setUser={setUser} />}
+          </div>
 
 
           <Switch>
@@ -153,16 +159,12 @@ const App = () => {
               path="/all"
               render={(props) => <All {...props} thePropUser={user} />}
             />
-
-
-
-
-
-
             <Route component={NotFound} />
           </Switch>
-          {!user && <GoogleAuth setUser={setUser} />}
-          {!user && <GoogleAuthLogin setUser={setUser} />}
+          {/* <div>
+            {!user && <GoogleAuth setUser={setUser} />}
+            {!user && <GoogleAuthLogin setUser={setUser} />}
+          </div> */}
 
           <NotificationContainer />
 

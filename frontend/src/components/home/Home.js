@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
 import moment from 'moment'
 import actions from '../../api/index'
-import logo from '/Users/secondary/Desktop/ironhack/finalmern/frontend/src/img/Dev_logo.png'
+// import logo from '/img/Dev_logo.png'
 import "../css/app.css"
 import TheContext from '../../TheContext'
 import NewPost from '../newpost/NewPost'
@@ -112,6 +112,7 @@ const Home = (props) => {
       ) :
         <Fragment>
 
+          <Navbar.Brand className="navbrand" href="/all"></Navbar.Brand>
 
           <div className="hometext">
             <h1>Welcome to Devlink</h1>
@@ -121,9 +122,6 @@ const Home = (props) => {
           {!user && <GoogleAuthLogin setUser={setUser} />}
         </Fragment>
       }
-
-
-
 
     </Container>
   )
