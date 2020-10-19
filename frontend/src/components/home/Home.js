@@ -118,8 +118,6 @@ const Home = (props) => {
             <h1>Welcome to Devlink</h1>
             <h3>Where coders can come together</h3>
           </div>
-          {!user && <GoogleAuth setUser={setUser} />}
-          {!user && <GoogleAuthLogin setUser={setUser} />}
         </Fragment>
       }
 
